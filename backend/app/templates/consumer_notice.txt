@@ -1,0 +1,95 @@
+LEGAL NOTICE / DEMAND FOR REDRESSAL
+
+Date: {{ date }}
+
+TO,
+{% if recipient.company_name %}{{ recipient.company_name }}
+{% elif recipient.name %}{{ recipient.name }}
+{% else %}[Seller / Service Provider]
+{% endif %}{% if recipient.address %}{{ recipient.address }}
+{% endif %}{% if recipient.contact %}Contact: {{ recipient.contact }}
+{% endif %}
+
+FROM,
+{{ sender.name | default('[Sender Name]') }}
+{{ sender.address | default('[Sender Address]') }}
+{% if sender.contact %}Contact: {{ sender.contact }}{% endif %}
+
+SUBJECT: Legal Notice and Demand for Redressal — {{ extra_details.product_name | default('Product / Service') }}
+
+Dear Sir/Madam,
+
+I, {{ sender.name | default('[Sender Name]') }}, am issuing this legal notice in my personal capacity as a consumer, calling upon you to address my grievance as described below.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. FACTS OF THE MATTER
+{% for fact in relevant_facts %}   • {{ fact }}
+{% else %}   [Please insert relevant facts]
+{% endfor %}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. TRANSACTION DETAILS
+   • Date of Purchase / Transaction : {{ extra_details.purchase_date | default('N/A') }}
+   • Product / Service              : {{ extra_details.product_name | default('N/A') }}
+   • Invoice / Order Number         : {{ extra_details.invoice_number | default('N/A') }}
+   • Amount Paid                    : {{ extra_details.price | default('N/A') }}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. NATURE OF GRIEVANCE
+{{ issue_description }}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. APPLICABLE LEGAL PROVISIONS
+The following provisions of the Consumer Protection Act, 2019 are applicable to the above grievance:
+{% for item in applicable_sections %}
+   — {{ item.act }}, {{ item.section }}
+     {{ item.meaning }}
+     [Verified: {{ 'Yes' if item.verified else 'No' }}]
+{% endfor %}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. DEMAND / RELIEF SOUGHT
+In light of the above facts and applicable legal provisions, I hereby call upon you to:
+
+   {{ remedy }}
+
+You are required to comply within {{ extra_details.notice_period | default('15') }} days of receiving this notice.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. FAILURE TO RESOLVE / FURTHER ACTION
+Should you fail to resolve the matter within the stipulated period, I shall be constrained to:
+   (a) File a formal consumer complaint before the appropriate District Consumer Disputes Redressal Commission
+       under the Consumer Protection Act, 2019; and / or
+   (b) Lodge a complaint on the Government's e-Daakhil portal (edaakhil.nic.in).
+Any such proceedings and consequential costs shall be at your sole risk and responsibility.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7. DOCUMENTS / SUPPORTING EVIDENCE
+The following documents are available and will be submitted as evidence before the relevant authority if required:
+   • Proof of purchase / invoice
+   • Photographs or video evidence of the defect (if available)
+   • Correspondence records with the seller / company
+   • Any warranty card or product documentation
+   • Any other relevant document
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Yours faithfully,
+
+_______________________
+{{ sender.name | default('[Sender Name]') }}
+Date: {{ date }}
+
+======================================================================
+DISCLAIMER:
+This document is auto-generated for informational purposes only and
+does not constitute legal advice. Please consult a qualified lawyer
+before taking legal action.
+======================================================================

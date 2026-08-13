@@ -1,0 +1,871 @@
+{
+  "kb_version": "2026.08.1",
+  "last_verified": "2026-08-13",
+  "note": "All section numbers below were checked against India Code / official bare-act text or primary law-firm summaries of the bare act as of Aug 2026. Where a section could not be independently confirmed, verified is set to false and the entry should be re-checked by a human before production use. The four Labour Codes (Code on Wages 2019, Industrial Relations Code 2020, Occupational Safety Health and Working Conditions Code 2020, Code on Social Security 2020) came into force on 21 November 2025, replacing the older labour statutes (Payment of Wages Act, Minimum Wages Act, Industrial Disputes Act, Payment of Bonus Act etc.), but the detailed Central and State Rules under the Codes were still being finalised as of early 2026, so some procedural details may change.",
+  "issues": [
+
+    {
+      "domain": "consumer",
+      "issue": "defective_product",
+      "description": "The goods bought turned out faulty, damaged, or not matching the promised quality/standard.",
+      "example_phrases": [
+        "My phone stopped working after purchase.",
+        "I received a defective product.",
+        "The washing machine I bought has a manufacturing fault.",
+        "मेरा खरीदा हुआ सामान खराब है।",
+        "दुकानदार ने खराब प्रोडक्ट दिया और बदलने से मना कर रहा है।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(10)",
+          "meaning": "Defines 'defect' as any fault, imperfection or shortcoming in the quality, quantity, potency, purity or standard of goods required to be maintained by law or claimed by the seller.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 35",
+          "meaning": "Lets a consumer file a complaint before the District Consumer Commission, normally within two years of the defect coming to light.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 39",
+          "meaning": "Lists the reliefs the District Commission can order: replacement, repair, refund, or compensation for a defective product.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Send a written notice/legal notice to the seller/manufacturer asking for repair, replacement or refund within a reasonable time; if refused, file a complaint on the e-Daakhil portal or before the District Consumer Disputes Redressal Commission.",
+      "template_id": "consumer_defective_product",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "product_not_delivered",
+      "description": "Payment was made but the product/order was never delivered, or delivery was unreasonably delayed.",
+      "example_phrases": [
+        "I paid for a product online but it was never delivered.",
+        "My order shows delivered but I never received it.",
+        "The delivery is delayed by weeks with no update.",
+        "मैंने ऑनलाइन ऑर्डर किया लेकिन सामान अभी तक नहीं मिला।",
+        "पैसे कट गए पर डिलीवरी नहीं हुई।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(11)",
+          "meaning": "Non-delivery of a paid-for product/service is treated as a 'deficiency' in service - any shortcoming in the manner or performance required by the seller/platform.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection (E-Commerce) Rules, 2020",
+          "section": "Rule 5",
+          "meaning": "Requires e-commerce entities to clearly disclose delivery timelines and to honour them; failure is a ground for complaint.",
+          "source": "Ministry of Consumer Affairs",
+          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 39",
+          "meaning": "District Commission can order a refund plus compensation for the delay and mental agony caused.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Ask the seller/platform for the order status and a refund deadline in writing; escalate to the platform's grievance officer, then to the District Consumer Commission or the National Consumer Helpline (1915) if unresolved.",
+      "template_id": "consumer_product_not_delivered",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "refund_not_given",
+      "description": "Seller/service provider took back the defective product or cancelled the order but is refusing or delaying the refund.",
+      "example_phrases": [
+        "The shop won't refund my money for a returned item.",
+        "I cancelled my order but haven't got my refund.",
+        "The company promised a refund within 7 days but it's been a month.",
+        "दुकानदार पैसे वापस नहीं कर रहा है।",
+        "रिफंड का वादा किया था पर अब तक नहीं मिला।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(47)(viii)",
+          "meaning": "Treats it as an unfair trade practice when a seller, after taking back defective goods or discontinuing a deficient service, refuses to refund the amount within the promised time (or 30 days if nothing was stipulated).",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 39",
+          "meaning": "Empowers the District Commission to direct the refund of the price along with interest and compensation.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Send a written refund demand with proof of payment/cancellation and a deadline; if ignored, file a consumer complaint for refund plus interest and compensation.",
+      "template_id": "consumer_refund_not_given",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "service_deficiency",
+      "description": "A paid service (repair, banking, insurance, telecom, construction, etc.) was performed poorly, incompletely, or not as promised.",
+      "example_phrases": [
+        "The mechanic didn't fix my car properly even after I paid.",
+        "My insurance claim was wrongly rejected.",
+        "The bank is not resolving my complaint about wrong charges.",
+        "सर्विस ठीक से नहीं दी गई फिर भी पैसे ले लिए।",
+        "बैंक मेरी शिकायत का समाधान नहीं कर रहा।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(11)",
+          "meaning": "Defines 'deficiency' as any fault, imperfection, shortcoming or inadequacy in the quality, nature or manner of performance of a service that is required under law or contract, including banking, insurance and financial services.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 35",
+          "meaning": "Consumer can file a complaint before the District Commission for deficiency in service, generally within two years of the cause of action.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Raise a written complaint with the service provider's grievance/nodal officer first (mandatory for banking/insurance/telecom); if unresolved, approach the sector ombudsman (e.g. RBI Banking Ombudsman, IRDAI) or the Consumer Commission.",
+      "template_id": "consumer_service_deficiency",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "overcharging",
+      "description": "Being charged more than the MRP, the quoted price, or the price fixed under law/tariff.",
+      "example_phrases": [
+        "The shop charged more than the MRP printed on the product.",
+        "The restaurant added extra service charge without informing me.",
+        "I was billed more than the price we agreed on.",
+        "दुकान ने एमआरपी से ज्यादा पैसे लिए।",
+        "बिल में गलत तरीके से ज्यादा राशि जोड़ दी गई।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(6)",
+          "meaning": "Being 'charged a price in excess of the price fixed by or under any law, or displayed on the goods, or on the package, or agreed between the parties' is expressly recognised as a ground for a consumer complaint.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 39",
+          "meaning": "District Commission can order the excess amount charged to be returned along with compensation.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Keep the bill/receipt showing the MRP and the amount charged; ask for a refund of the excess in writing, and complain to the Consumer Commission or National Consumer Helpline if refused.",
+      "template_id": "consumer_overcharging",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "false_or_misleading_advertising",
+      "description": "A product/service was advertised with false, exaggerated or misleading claims that induced the purchase.",
+      "example_phrases": [
+        "The advertisement claimed benefits the product doesn't actually have.",
+        "A celebrity endorsed a product that turned out to be fake/harmful.",
+        "The ad hid important information about the product.",
+        "विज्ञापन में झूठा दावा किया गया था।",
+        "प्रोडक्ट का विज्ञापन गुमराह करने वाला था।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(28)",
+          "meaning": "Defines 'misleading advertisement' as one that falsely describes a product/service, gives a false guarantee, or conceals material information likely to affect a consumer's decision.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 21",
+          "meaning": "Empowers the Central Consumer Protection Authority (CCPA) to investigate false/misleading advertisements and impose penalties (up to ₹10 lakh, ₹50 lakh for repeat offences) on the manufacturer, service provider or endorser, including a ban on endorsement.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 89",
+          "meaning": "Makes causing a false or misleading advertisement prejudicial to consumers a criminal offence, punishable with up to 2 years' imprisonment and a fine up to ₹10 lakh (higher for repeat offences).",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Preserve the advertisement (screenshot/recording); file a complaint with the CCPA (via the National Consumer Helpline/e-Daakhil) or the District Consumer Commission for compensation.",
+      "template_id": "consumer_misleading_advertising",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "unfair_contract_terms",
+      "description": "A one-sided contract/agreement term (excessive security deposit, disproportionate penalty, no cancellation right, unilateral changes) that unfairly favours the seller.",
+      "example_phrases": [
+        "The gym membership contract has a clause that doesn't let me cancel.",
+        "The builder's agreement has terms heavily favouring the builder.",
+        "The service contract lets the company change terms without my consent.",
+        "अनुबंध की शर्तें एकतरफा हैं और मेरे खिलाफ हैं।",
+        "कंपनी ने कॉन्ट्रैक्ट में मनमानी शर्तें रख दी हैं।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(46)",
+          "meaning": "Defines 'unfair contract' as a contract between a trader/manufacturer and a consumer whose terms cause a significant change in the consumer's rights - e.g. excessive security deposits, disproportionate penalties, one-sided termination rights, or unilateral alteration of terms.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 39",
+          "meaning": "Allows the District Commission to declare unfair contract terms void and grant appropriate relief.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Identify and highlight the specific one-sided clause in writing to the trader and ask for it to be removed/amended; if refused, file a complaint before the Consumer Commission seeking the term be declared void.",
+      "template_id": "consumer_unfair_contract_terms",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "product_caused_injury_or_damage",
+      "description": "A defective product or deficient service caused physical injury, health harm, or damage to property.",
+      "example_phrases": [
+        "A defective appliance caused a fire in my house.",
+        "I got injured because of a faulty product.",
+        "The medicine/food item caused health problems.",
+        "खराब प्रोडक्ट से मुझे चोट लग गई।",
+        "प्रोडक्ट की खराबी से मेरे घर को नुकसान हुआ।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(34)",
+          "meaning": "Defines 'product liability' as the responsibility of a product manufacturer, product seller or product service provider to compensate a consumer for harm caused by a defective product or a related deficiency in service.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Sections 82-87 (Chapter VI - Product Liability)",
+          "meaning": "Sets out when a manufacturer, seller and service provider are each liable for harm from a defective product (manufacturing defect, design defect, inadequate warning/instructions, deviation from specifications), and the compensation a claimant can seek.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Preserve medical records/photos/the product itself as evidence; file a 'product liability action' before the appropriate Consumer Commission claiming compensation for injury, property damage and mental agony.",
+      "template_id": "consumer_product_injury",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "consumer",
+      "issue": "ecommerce_consumer_issue",
+      "description": "Problems specific to online marketplaces - fake/counterfeit sellers, no return policy honoured, wrong item shipped, platform not disclosing seller details.",
+      "example_phrases": [
+        "I received a fake/counterfeit product from an online seller.",
+        "The e-commerce app is not letting me return a wrong item.",
+        "The online seller is untraceable and the platform isn't helping.",
+        "ऑनलाइन प्लेटफार्म से नकली सामान मिला।",
+        "ई-कॉमर्स ऐप रिटर्न या रिफंड नहीं दे रहा।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Consumer Protection (E-Commerce) Rules, 2020",
+          "section": "Rule 5",
+          "meaning": "Requires e-commerce entities to disclose seller details, return/refund/exchange/warranty terms, and grievance officer contact, and to acknowledge complaints within 48 hours and resolve within one month.",
+          "source": "Ministry of Consumer Affairs",
+          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020"
+        },
+        {
+          "act": "Consumer Protection Act, 2019",
+          "section": "Section 2(47)",
+          "meaning": "Selling counterfeit/misrepresented goods on a platform is an unfair trade practice, actionable against the seller and, in some cases, the marketplace.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+        }
+      ],
+      "remedy": "Complain first to the platform's designated grievance officer (mandatory under the E-Commerce Rules) with order/payment proof; escalate to the National Consumer Helpline (1915) or Consumer Commission if unresolved within a month.",
+      "template_id": "consumer_ecommerce_issue",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "salary_not_paid",
+      "description": "Employer has not paid wages/salary for work already done.",
+      "example_phrases": [
+        "My employer hasn't paid my salary for two months.",
+        "I resigned but haven't received my final settlement.",
+        "The company owes me unpaid wages.",
+        "मेरी सैलरी दो महीने से नहीं मिली है।",
+        "कंपनी ने मेरा बकाया वेतन नहीं दिया।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 17",
+          "meaning": "Requires an employer to pay wages within a fixed time limit (usually by the 7th/10th of the following wage period), and pay full dues within two working days if the employee resigns, is removed, dismissed or retrenched.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        },
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 15",
+          "meaning": "Requires wages to be paid in cash, cheque or directly into the employee's bank account - unpaid wages remain a legally recoverable due.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        }
+      ],
+      "remedy": "Send a written wage-recovery notice to the employer; if unresolved, file a claim before the authority notified under the Code on Wages (labour commissioner's office) or approach the Industrial Relations Code's dispute-resolution machinery.",
+      "template_id": "labour_salary_not_paid",
+      "jurisdiction_note": "Detailed Central and State Rules under the Labour Codes were still being finalised as of early 2026; procedural timelines for filing claims may vary by state until then.",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "salary_paid_late",
+      "description": "Salary is paid but consistently after the legally required due date.",
+      "example_phrases": [
+        "My company always pays salary 15-20 days late.",
+        "Salary is delayed every month without explanation.",
+        "I never get my wages on the promised date.",
+        "मेरी सैलरी हर महीने देर से आती है।",
+        "कंपनी समय पर वेतन नहीं देती।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 17",
+          "meaning": "Fixes the outer time limit within which wages must be paid after the end of a wage period (daily/weekly/fortnightly/monthly), and lets the appropriate Government prescribe stricter limits for certain establishments.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        },
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 16",
+          "meaning": "Requires every employer to fix a wage period (not exceeding one month) so employees can know when payment is due.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        }
+      ],
+      "remedy": "Keep a record of actual payment dates versus due dates; raise the delay in writing with HR, and if it continues, file a complaint with the labour authority/Inspector-cum-Facilitator under the Code on Wages.",
+      "template_id": "labour_salary_paid_late",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "illegal_wage_deduction",
+      "description": "Employer deducts amounts from salary that are not legally permitted, or deducts more than the allowed limit.",
+      "example_phrases": [
+        "My employer deducted money from my salary without explanation.",
+        "A fine was imposed on me that seems illegal.",
+        "More than half my salary was deducted this month.",
+        "मेरी सैलरी से गलत तरीके से कटौती की गई।",
+        "बिना बताए वेतन से पैसे काट लिए गए।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 18",
+          "meaning": "Lists the only permissible deductions from wages (fines, absence, damage/loss, advances, taxes, PF, etc.) and caps total deductions in any wage period at 50% of wages (up to 75% for cooperative society dues).",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        },
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 19",
+          "meaning": "Regulates fines on employees - they must follow a fixed procedure, cannot be recovered in instalments beyond 90 days, and must be recorded in a register.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        }
+      ],
+      "remedy": "Ask the employer in writing for a written breakdown of the deduction and the legal ground for it; if unjustified or exceeds the cap, raise it with the Inspector-cum-Facilitator or the labour authority.",
+      "template_id": "labour_illegal_wage_deduction",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "minimum_wage_violation",
+      "description": "Being paid less than the minimum/floor wage notified for the job category and region.",
+      "example_phrases": [
+        "I'm being paid less than the minimum wage for my work.",
+        "My daily wage is below the government-fixed minimum.",
+        "The contractor pays us less than the notified rate.",
+        "मुझे न्यूनतम वेतन से कम पैसे दिए जा रहे हैं।",
+        "ठेकेदार सरकार द्वारा तय दर से कम भुगतान करता है।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 6",
+          "meaning": "Requires the appropriate Government to fix minimum rates of wages for scheduled employments; no employer can pay less than this fixed minimum.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        },
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 9",
+          "meaning": "Empowers the Central Government to fix a national 'floor wage'; state minimum wages cannot be lower than this floor.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        }
+      ],
+      "remedy": "Check the current State minimum wage notification for your job category; if underpaid, complain in writing to the employer, and file a claim before the labour authority for the wage shortfall.",
+      "template_id": "labour_minimum_wage_violation",
+      "jurisdiction_note": "Minimum wage rates are notified separately by each State/Union Territory and revised periodically - the exact applicable rate must be checked against the current State notification.",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "overtime_not_paid",
+      "description": "Made to work beyond normal working hours without the legally mandated overtime pay.",
+      "example_phrases": [
+        "I work extra hours but never get overtime pay.",
+        "My employer makes me work overtime without extra payment.",
+        "I'm forced to stay late without any compensation.",
+        "मुझसे ओवरटाइम कराया जाता है पर पैसे नहीं मिलते।",
+        "अतिरिक्त काम के लिए अतिरिक्त वेतन नहीं दिया जाता।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Section 14",
+          "meaning": "Entitles an employee who works beyond the normal working hours to overtime wages at twice the normal rate of wages.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        },
+        {
+          "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "section": "Sections 25-32",
+          "meaning": "Fix normal daily/weekly working hours (generally not more than 8 hours a day), require the worker's prior consent for overtime, and mandate overtime pay at twice the normal wage rate.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+        }
+      ],
+      "remedy": "Keep records of actual hours worked; request overtime payment in writing citing the applicable Code, and escalate to the labour authority/Inspector-cum-Facilitator if refused.",
+      "template_id": "labour_overtime_not_paid",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "bonus_not_paid",
+      "description": "Eligible employee did not receive the annual bonus due under law.",
+      "example_phrases": [
+        "My company didn't pay Diwali/annual bonus this year.",
+        "I'm eligible for bonus but haven't received it.",
+        "The employer says bonus is optional and refuses to pay.",
+        "कंपनी ने इस साल बोनस नहीं दिया।",
+        "मुझे बोनस पाने का हक है पर नहीं मिला।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "Sections 26-41 (Chapter IV - Payment of Bonus)",
+          "meaning": "Requires eligible employers to pay an annual bonus to eligible employees (subject to wage-ceiling and minimum service conditions), sets the minimum and maximum bonus percentage, and the timeline for payment.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+        }
+      ],
+      "remedy": "Confirm your eligibility (wage ceiling and minimum 30 working days in the accounting year) and raise a written demand for bonus with HR; escalate to the labour authority if refused despite eligibility.",
+      "template_id": "labour_bonus_not_paid",
+      "jurisdiction_note": "Exact wage-ceiling figures for bonus eligibility are notified/updated periodically and should be checked against the current notification.",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "wrongful_termination_or_retrenchment",
+      "description": "Dismissed, terminated or retrenched without following the legally required notice, compensation, or procedure.",
+      "example_phrases": [
+        "I was fired without notice or reason.",
+        "The company retrenched me without paying compensation.",
+        "I was terminated verbally with no written notice.",
+        "मुझे बिना नोटिस के नौकरी से निकाल दिया गया।",
+        "कंपनी ने मुझे मुआवजा दिए बिना हटा दिया।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Industrial Relations Code, 2020",
+          "section": "Section 70",
+          "meaning": "Bars retrenchment of a worker with one year or more of continuous service unless the worker is given one month's written notice (or pay in lieu), retrenchment compensation of about 15 days' average pay for every completed year of service, and the Government is informed.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+        },
+        {
+          "act": "Industrial Relations Code, 2020",
+          "section": "Section 53",
+          "meaning": "Deems any dispute over an individual worker's discharge, dismissal, retrenchment or termination to be an 'industrial dispute', letting the worker seek conciliation/adjudication even without a union.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+        }
+      ],
+      "remedy": "Ask the employer in writing for the reason for termination and dues owed; if the notice/compensation conditions were not followed, raise a grievance and, if unresolved, an industrial dispute before the conciliation officer/Industrial Tribunal.",
+      "template_id": "labour_wrongful_termination",
+      "jurisdiction_note": "Certain categories (e.g. probationers, fixed-term contract completion, voluntary retirement, misconduct-based dismissal after due enquiry) are treated differently under the Code - the exact facts determine which provisions apply.",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "workplace_grievance",
+      "description": "General workplace complaints - harassment by supervisor, unsafe conditions, unfair treatment - that need a formal grievance process.",
+      "example_phrases": [
+        "I want to raise a formal complaint against my manager.",
+        "There's no proper channel to report workplace issues.",
+        "I'm facing unfair treatment at work and don't know where to complain.",
+        "मुझे अपने ऑफिस में शिकायत दर्ज करानी है।",
+        "काम की जगह पर मेरे साथ गलत व्यवहार हो रहा है।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Industrial Relations Code, 2020",
+          "section": "Section 4",
+          "meaning": "Makes it mandatory for every industrial establishment with 20 or more workers to set up one or more Grievance Redressal Committees, with equal representation of employer and workers, to resolve individual worker grievances.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+        },
+        {
+          "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "section": "Section 22",
+          "meaning": "Provides for a Safety Committee (in prescribed establishments) through which a worker can raise safety-related grievances, in addition to the Grievance Redressal Committee.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+        }
+      ],
+      "remedy": "Submit a written grievance to the establishment's Grievance Redressal Committee (or HR if no committee exists); if unresolved within the prescribed time, escalate through a trade union to the conciliation officer.",
+      "template_id": "labour_workplace_grievance",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "labour",
+      "issue": "employment_terms_or_working_conditions",
+      "description": "No appointment letter issued, unclear employment terms, or working conditions not matching what was promised (hours, designation, wages structure).",
+      "example_phrases": [
+        "I was never given an appointment letter.",
+        "My job terms were never put in writing.",
+        "My actual working conditions don't match what I was told when hired.",
+        "मुझे नियुक्ति पत्र नहीं दिया गया।",
+        "मेरी नौकरी की शर्तें लिखित में नहीं दी गईं।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "section": "Sections 6-12",
+          "meaning": "Places a duty on every employer to issue a formal appointment letter to each employee, specifying designation, category, wages and social security details, and to maintain safe and healthy working conditions; employees not given a letter before the Code's commencement had to be issued one within three months.",
+          "source": "India Code / PIB",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+        }
+      ],
+      "remedy": "Request a written appointment letter/employment contract from the employer citing the appointment-letter requirement; if refused, raise it with the labour authority/Inspector-cum-Facilitator.",
+      "template_id": "labour_employment_terms",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "security_deposit_not_returned",
+      "description": "Landlord is not returning the security deposit (or an unfair amount) after the tenant has vacated the premises.",
+      "example_phrases": [
+        "My landlord is not returning my security deposit.",
+        "I vacated the flat but haven't received my deposit back.",
+        "The landlord is deducting an unreasonable amount from my deposit.",
+        "मकान मालिक सिक्योरिटी डिपॉजिट वापस नहीं कर रहा।",
+        "घर खाली करने के बाद भी जमा राशि नहीं मिली।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 11",
+          "meaning": "Caps the security deposit at two months' rent for residential premises (six months for non-residential) and requires the landlord to refund it when vacant possession is taken back, after lawful deductions only.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        },
+        {
+          "act": "Transfer of Property Act, 1882",
+          "section": "Section 108",
+          "meaning": "General law on the rights and liabilities of lessor and lessee, used as the fallback framework in states that have not adopted a tenancy-specific law.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338"
+        }
+      ],
+      "remedy": "Send a written demand for the deposit with the vacating date and any deduction breakdown requested; approach the Rent Authority/Rent Court (where the Model Tenancy Act or a state variant applies) or a civil/small-causes court otherwise.",
+      "template_id": "tenant_security_deposit_not_returned",
+      "jurisdiction_note": "The Model Tenancy Act, 2021 is a central 'model' law - it applies only in states/UTs that have specifically adopted it or enacted a similar law (e.g. Uttar Pradesh, Assam, Tamil Nadu, Andhra Pradesh, with others aligning rules). In states that have not adopted it, the relevant state Rent Control Act or general contract/property law governs instead.",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "illegal_eviction",
+      "description": "Landlord trying to forcibly evict a tenant, lock the premises, or cut off access without following the legal eviction process.",
+      "example_phrases": [
+        "My landlord is trying to evict me without notice.",
+        "The landlord locked my rented room while I was away.",
+        "I'm being forced out of my rented house illegally.",
+        "मकान मालिक मुझे बिना नोटिस के घर से निकाल रहा है।",
+        "मकान मालिक ने ताला लगा दिया और सामान बाहर कर दिया।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 21",
+          "meaning": "Lists the only lawful grounds for eviction (non-payment of rent, unauthorised subletting, misuse of premises, landlord's genuine need for repair/reconstruction, etc.) and requires the landlord to approach the Rent Court - self-help eviction outside this process is not lawful.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        },
+        {
+          "act": "Bharatiya Nyaya Sanhita, 2023",
+          "section": "Section 329 (Criminal trespass / house-trespass)",
+          "meaning": "Forcibly entering or interfering with property in another's lawful possession (e.g. forcing entry, changing locks without due process) can amount to criminal trespass, which is a punishable offence.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20062"
+        }
+      ],
+      "remedy": "Do not vacate under threat; send a written notice to the landlord citing the illegality, keep evidence (photos/witnesses), and file a police complaint for illegal trespass along with an application before the Rent Court/civil court for restoration of possession.",
+      "template_id": "tenant_illegal_eviction",
+      "jurisdiction_note": "The Model Tenancy Act, 2021 applies only where adopted by the state. Where not adopted, the applicable state Rent Control Act (which also generally bars eviction except through due process) or general law applies.",
+      "verified": false
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "rent_increase_dispute",
+      "description": "Landlord raising rent without proper notice, or by an amount not agreed to in the tenancy agreement.",
+      "example_phrases": [
+        "My landlord suddenly increased the rent without notice.",
+        "The rent hike seems excessive and wasn't agreed to.",
+        "I wasn't given proper notice before the rent was raised.",
+        "मकान मालिक ने बिना सूचना के किराया बढ़ा दिया।",
+        "किराया अचानक बहुत ज्यादा बढ़ा दिया गया।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 4",
+          "meaning": "Requires the terms and periodicity of rent revision to be fixed in the written tenancy agreement itself, so any increase must follow what was agreed, not be unilateral.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        }
+      ],
+      "remedy": "Check the written tenancy agreement for the agreed revision terms and notice period; if the increase doesn't comply, respond in writing disputing it and, if the state has adopted the Model Tenancy Act or a Rent Control Act, approach the Rent Authority/Rent Court.",
+      "template_id": "tenant_rent_increase_dispute",
+      "jurisdiction_note": "Rent-increase rules vary significantly across states that have their own Rent Control Acts (some cap the percentage/frequency of increase); where the Model Tenancy Act is not adopted, the terms of the written agreement and applicable state law govern.",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "landlord_refuses_repairs",
+      "description": "Landlord is refusing to carry out structural repairs or essential maintenance that are their responsibility.",
+      "example_phrases": [
+        "My landlord won't fix the leaking roof/plumbing.",
+        "Essential repairs are being ignored by the landlord.",
+        "The house has structural issues the landlord won't address.",
+        "मकान मालिक मरम्मत नहीं करवा रहा है।",
+        "छत टपक रही है पर मकान मालिक ध्यान नहीं दे रहा।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 15",
+          "meaning": "Divides repair and maintenance responsibilities between landlord and tenant (per the Act's schedule/agreement) - if the landlord fails to carry out their share, the tenant may get it done and deduct the cost from future rent.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        }
+      ],
+      "remedy": "Send a written repair request to the landlord with a reasonable deadline and photos of the issue; if ignored, get the repair done and deduct documented costs from the next rent payment, or approach the Rent Authority/Court where applicable.",
+      "template_id": "tenant_landlord_refuses_repairs",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "essential_services_withheld",
+      "description": "Landlord cutting off or withholding essential services like water, electricity, or building access to pressure the tenant.",
+      "example_phrases": [
+        "My landlord cut off the water/electricity supply.",
+        "The landlord is withholding essential services to force me out.",
+        "I have no access to basic utilities because of the landlord.",
+        "मकान मालिक ने पानी-बिजली काट दी है।",
+        "जरूरी सुविधाएं रोक दी गई हैं ताकि मैं घर खाली कर दूं।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 20",
+          "meaning": "Prohibits a landlord/property manager from withholding essential supplies or services (water, electricity, cooking gas, lifts, etc.); the Rent Authority can order immediate restoration and impose a penalty, including compensation up to two months' rent to the tenant.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        }
+      ],
+      "remedy": "Document the cut-off with photos/dates and complain in writing to the landlord immediately; approach the Rent Authority for an urgent restoration order (or file a police complaint/civil suit for injunction where the Act doesn't apply).",
+      "template_id": "tenant_essential_services_withheld",
+      "jurisdiction_note": "Where the Model Tenancy Act is not adopted, most states still treat wilful cutting-off of water/electricity to a tenant in possession as an offence or civil wrong under local municipal/electricity laws and general tort law.",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "rent_receipt_not_provided",
+      "description": "Landlord accepts rent but refuses to issue a receipt, causing problems for tax/HRA claims or proof of payment.",
+      "example_phrases": [
+        "My landlord doesn't give me rent receipts.",
+        "I need rent receipts for HRA but the landlord refuses.",
+        "There's no proof of my rent payments.",
+        "मकान मालिक किराया रसीद नहीं देता।",
+        "एचआरए के लिए रेंट रिसीट चाहिए पर मकान मालिक मना कर रहा है।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 13",
+          "meaning": "Requires the landlord to issue a receipt for the rent and other charges paid by the tenant.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        }
+      ],
+      "remedy": "Request rent receipts in writing (email/SMS) each month so there is a paper trail; if refused, pay by bank transfer/UPI and keep the transaction record as proof, and escalate to the Rent Authority where the Act applies.",
+      "template_id": "tenant_rent_receipt_not_provided",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "landlord_or_tenant_breach",
+      "description": "Either party (landlord or tenant) is not honouring the terms of the tenancy agreement in general (e.g. subletting without consent, non-payment, misuse).",
+      "example_phrases": [
+        "My tenant is subletting the flat without my permission.",
+        "The landlord is not honouring the terms of our agreement.",
+        "There's a dispute over what was agreed in our rental contract.",
+        "किरायेदार ने बिना अनुमति के घर आगे किराए पर दे दिया।",
+        "मकान मालिक अनुबंध की शर्तें नहीं मान रहा।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 21",
+          "meaning": "Lists breach-related grounds on which a landlord can seek eviction through the Rent Court, including subletting without written consent, non-payment of rent for two consecutive months, and misuse of premises after notice to desist.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        },
+        {
+          "act": "Transfer of Property Act, 1882",
+          "section": "Section 108",
+          "meaning": "Sets out the general rights and duties of lessor and lessee (e.g. duty to pay rent, not to damage the property, landlord's duty to maintain), used where a specific tenancy law doesn't apply.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338"
+        }
+      ],
+      "remedy": "Refer to the specific clause of the written tenancy agreement that has been breached; send a written notice describing the breach and a cure period, before approaching the Rent Court/civil court.",
+      "template_id": "tenant_landlord_or_tenant_breach",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "unauthorized_entry_by_landlord",
+      "description": "Landlord entering the rented premises without notice or consent, violating the tenant's right to peaceful occupation.",
+      "example_phrases": [
+        "My landlord enters my flat without informing me.",
+        "The landlord walked in without permission while I was out.",
+        "I want to stop my landlord from entering without notice.",
+        "मकान मालिक बिना बताए घर में घुस आता है।",
+        "मकान मालिक मेरी अनुमति के बिना कमरे में आ जाता है।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 17",
+          "meaning": "Requires the landlord/property manager to give at least 24 hours' prior notice before entering the premises for a reasonable cause (like repairs or inspection), except in genuine emergencies (fire, flood, etc.), and bars entry before sunrise or after sunset.",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        }
+      ],
+      "remedy": "Communicate the notice requirement to the landlord in writing; document any unauthorised entry (time, witnesses); approach the Rent Authority/Court for an order restraining unauthorised entry where the Act applies.",
+      "template_id": "tenant_unauthorized_entry",
+      "jurisdiction_note": "",
+      "verified": true
+    },
+
+    {
+      "domain": "tenant",
+      "issue": "tenancy_agreement_dispute",
+      "description": "Disagreement over the terms, validity, or registration of the tenancy agreement itself (verbal agreement, missing terms, refusal to register).",
+      "example_phrases": [
+        "We never signed a written rental agreement and now there's a dispute.",
+        "The landlord is denying terms we had verbally agreed to.",
+        "My landlord refuses to register the rent agreement.",
+        "हमारे बीच लिखित एग्रीमेंट नहीं है और अब विवाद हो गया है।",
+        "मकान मालिक रेंट एग्रीमेंट रजिस्टर नहीं करवा रहा।"
+      ],
+      "applicable_sections": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "Section 4",
+          "meaning": "Makes a written tenancy agreement mandatory, specifying rent, tenancy period, revision terms, security deposit, entry conditions and maintenance responsibilities, and requires it to be intimated to the Rent Authority (generally within two months).",
+          "source": "Ministry of Housing and Urban Affairs",
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+        },
+        {
+          "act": "Registration Act, 1908",
+          "section": "Section 17",
+          "meaning": "Requires leases of immovable property for a term exceeding one year to be compulsorily registered; an unregistered long-term lease can face evidentiary limitations in court.",
+          "source": "India Code",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2244"
+        }
+      ],
+      "remedy": "Formalise a written, signed tenancy agreement covering rent, deposit, duration and responsibilities as soon as possible; where a dispute already exists over verbal terms, gather corroborating evidence (payment records, messages) and approach the Rent Authority/civil court.",
+      "template_id": "tenant_tenancy_agreement_dispute",
+      "jurisdiction_note": "The Model Tenancy Act, 2021 is only binding in states/UTs that have adopted it; elsewhere the Registration Act, 1908 and state stamp duty/rent control laws govern the validity and registration of tenancy agreements.",
+      "verified": false
+    }
+
+  ]
+}

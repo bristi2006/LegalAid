@@ -1,0 +1,63 @@
+LEGAL NOTICE FOR TENANCY GRIEVANCES
+(Under Model Tenancy Act, 2021 / State Rent Control Laws)
+
+Date: {{ date }}
+
+TO,
+{{ recipient.name }} (Landlord)
+{{ recipient.address }}
+{% if recipient.contact %}
+Contact: {{ recipient.contact }}
+{% endif %}
+
+FROM,
+{{ sender.name }} (Tenant)
+{{ sender.address }}
+{% if sender.contact %}
+Contact: {{ sender.contact }}
+{% endif %}
+
+SUBJECT: Legal Notice regarding Tenancy of Rented Premises: {{ extra_details.premises_address | default(sender.address) }}
+
+Dear Sir/Madam,
+
+I hereby serve you with this legal notice in relation to the tenancy of the premises located at {{ extra_details.premises_address | default('Rented Premises') }}:
+
+1. TENANCY DETAILS:
+- Tenant Name: {{ sender.name }}
+- Landlord Name: {{ recipient.name }}
+- Rent Agreement Date: {{ extra_details.agreement_date | default('N/A') }}
+- Monthly Rent: {{ extra_details.monthly_rent | default('N/A') }}
+- Security Deposit Paid: {{ extra_details.security_deposit_amount | default('N/A') }}
+
+2. FACTS & ISSUES:
+- Grievance: {{ issue_description }}
+- Facts:
+{% for fact in relevant_facts %}
+  - {{ fact }}
+{% endfor %}
+
+3. LEGAL PROVISIONS & APPLICABLE LAWS:
+Your actions/omissions violate the provisions of the Model Tenancy Act, 2021 / relevant state Rent Control statutes / Transfer of Property Act, 1882. Specifically:
+{% for item in applicable_sections %}
+- Act: {{ item.act }}
+  Section: {{ item.section }}
+  Provision Meaning: {{ item.meaning }}
+  Verified: {{ 'Yes' if item.verified else 'No' }}
+{% endfor %}
+
+4. REMEDY / DEMAND:
+In light of the foregoing, you are hereby requested to:
+{{ remedy }}
+
+within a period of {{ extra_details.notice_period | default('15') }} days of receipt of this notice. If you fail to comply, I will be constrained to approach the Rent Authority or Rent Court/Tribunal under the Model Tenancy Act, or file an appropriate civil action, holding you liable for all legal expenses and damages.
+
+Yours faithfully,
+
+_______________________
+{{ sender.name }}
+
+----------------------------------------------------------------------
+DISCLAIMER:
+This document is auto-generated for informational purposes only and does not constitute legal advice. Please consult a qualified lawyer before taking legal action.
+----------------------------------------------------------------------

@@ -1,0 +1,61 @@
+DEMAND NOTICE FOR WAGES & COMPLIANCE
+(Under Section 17 of the Code on Wages, 2019 / relevant provisions)
+
+Date: {{ date }}
+
+TO,
+{{ recipient.name }} ({{ recipient.designation | default('Employer/Management') }})
+{{ recipient.company_name }}
+{{ recipient.address }}
+
+FROM,
+{{ sender.name }} ({{ sender.designation | default('Employee') }})
+{{ sender.address }}
+{% if sender.contact %}
+Contact: {{ sender.contact }}
+{% endif %}
+
+SUBJECT: Demand Notice for Unpaid Wages / Compliance regarding {{ issue_description }}
+
+Dear Sir/Madam,
+
+This is to formally notify you regarding the outstanding issues and claims arising from my employment with {{ recipient.company_name }}:
+
+1. EMPLOYEE & EMPLOYMENT DETAILS:
+- Employee Name: {{ sender.name }}
+- Designation: {{ sender.designation | default('Employee') }}
+- Employee ID/Number: {{ sender.employee_id | default('N/A') }}
+- Employment Period: From {{ extra_details.employment_start_date | default('N/A') }} to {{ extra_details.employment_end_date | default('Present') }}
+
+2. RELEVANT FACTS:
+- Nature of Grievance: {{ issue_description }}
+- Details of Unpaid Wages/Dues: {{ extra_details.unpaid_amount | default('N/A') }}
+- Facts:
+{% for fact in relevant_facts %}
+  - {{ fact }}
+{% endfor %}
+
+3. LEGAL PROVISIONS & APPLICABLE LAWS:
+Your failure to release my dues/comply with the employment terms is in direct violation of the Code on Wages, 2019 and other applicable labour statutes. The specific sections applicable to this matter are:
+{% for item in applicable_sections %}
+- Act: {{ item.act }}
+  Section: {{ item.section }}
+  Provision Meaning: {{ item.meaning }}
+  Verified: {{ 'Yes' if item.verified else 'No' }}
+{% endfor %}
+
+4. REMEDY / DEMAND:
+You are hereby demanded to:
+{{ remedy }}
+
+within a period of {{ extra_details.notice_period | default('15') }} days from the receipt of this notice. If you fail to resolve this matter within the stipulated timeline, I will be compelled to approach the notified authority under the Code on Wages (Labour Commissioner's Office) or initiate appropriate dispute resolution machinery under the Industrial Relations Code, 2020. This will be done at your sole risk, cost, and legal consequences.
+
+Yours faithfully,
+
+_______________________
+{{ sender.name }}
+
+----------------------------------------------------------------------
+DISCLAIMER:
+This document is auto-generated for informational purposes only and does not constitute legal advice. Please consult a qualified lawyer before taking legal action.
+----------------------------------------------------------------------
