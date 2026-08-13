@@ -130,6 +130,7 @@ async def explain_rights(
         "Explain the user's rights using only the sections in the KB content above."
     )
 
+    raw_text = None
     try:
         response = await client.aio.models.generate_content(
             model=model_name,
@@ -141,11 +142,12 @@ async def explain_rights(
                 temperature=0.0,
             ),
         )
-        result = ExplanationOutput.model_validate_json(response.text)
+        raw_text = response.text
+        result = ExplanationOutput.model_validate_json(raw_text)
         # Force confidence to 1.0 (deprecated field — real confidence is from confidence.py)
         result.confidence = 1.0
         logger.info("Explanation generated: cited_sections=%s", result.cited_sections)
         return result
     except Exception as e:
-        logger.error("LLM explanation failed: %s", str(e))
+        logger.error("LLM explanation failed: %s. Raw LLM response: %r", str(e), raw_text)
         raise RuntimeError(f"LLM Explanation failed: {e}") from e

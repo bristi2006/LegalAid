@@ -191,6 +191,9 @@ _DOMAIN_FALLBACK: Dict[str, Tuple[List[str], List[str]]] = {
 }
 
 
+import logging
+logger = logging.getLogger("legalaid.evidence")
+
 def get_evidence_requirements(
     domain: str,
     issue: Optional[str],
@@ -201,18 +204,28 @@ def get_evidence_requirements(
     Returns:
         {"must_have": [...], "nice_to_have": [...]}
     """
-    domain_map = _EVIDENCE_MAP.get(domain, {})
+    try:
+        domain_map = _EVIDENCE_MAP.get(domain, {})
 
-    if issue and issue in domain_map:
-        must_have, nice_to_have = domain_map[issue]
-    elif domain in _DOMAIN_FALLBACK:
-        must_have, nice_to_have = _DOMAIN_FALLBACK[domain]
-    else:
+        if issue and issue in domain_map:
+            must_have, nice_to_have = domain_map[issue]
+        elif domain in _DOMAIN_FALLBACK:
+            must_have, nice_to_have = _DOMAIN_FALLBACK[domain]
+        else:
+            must_have = ["Written complaint with dates and amounts", "Payment proof if applicable"]
+            nice_to_have = ["Any correspondence with the opposing party"]
+
+        return {
+            "must_have": must_have,
+            "nice_to_have": nice_to_have,
+            "all": must_have + nice_to_have,
+        }
+    except Exception as e:
+        logger.error("Unexpected error in get_evidence_requirements: %s", e)
         must_have = ["Written complaint with dates and amounts", "Payment proof if applicable"]
         nice_to_have = ["Any correspondence with the opposing party"]
-
-    return {
-        "must_have": must_have,
-        "nice_to_have": nice_to_have,
-        "all": must_have + nice_to_have,
-    }
+        return {
+            "must_have": must_have,
+            "nice_to_have": nice_to_have,
+            "all": must_have + nice_to_have,
+        }

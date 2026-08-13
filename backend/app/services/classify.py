@@ -186,6 +186,7 @@ async def classify_user_input(user_input: str) -> ClassificationOutput:
     )
 
     # ── 5. Call LLM with structured output ───────────────────────────────
+    raw_text = None
     try:
         response = await client.aio.models.generate_content(
             model=model_name,
@@ -197,9 +198,10 @@ async def classify_user_input(user_input: str) -> ClassificationOutput:
                 temperature=0.0,
             ),
         )
-        result = ClassificationOutput.model_validate_json(response.text)
+        raw_text = response.text
+        result = ClassificationOutput.model_validate_json(raw_text)
         logger.info("Classification complete: domain=%s issue=%s", result.domain, result.issue)
         return result
     except Exception as e:
-        logger.error("LLM classification failed: %s", str(e))
+        logger.error("LLM classification failed: %s. Raw LLM response: %r", str(e), raw_text)
         raise RuntimeError(f"LLM Classification failed: {e}") from e
