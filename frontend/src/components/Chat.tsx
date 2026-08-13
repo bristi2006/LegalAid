@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { MessageSquare, AlertCircle, Loader, ShieldAlert } from "lucide-react";
+import { MessageSquare, ShieldAlert, Loader, ArrowLeft } from "lucide-react";
 
 interface ChatProps {
   onSubmit: (query: string) => void;
+  onBack: () => void;
   loading: boolean;
   error: string | null;
   language: string;
@@ -38,7 +39,22 @@ const EXAMPLES_HI = [
   }
 ];
 
-export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }) => {
+const EXAMPLES_HINGLISH = [
+  {
+    label: "Consumer (Hinglish)",
+    text: "Mera naam Jane Doe hai, contact number +91-9876543210, Flat 101, Sunny Apartments, Sector 45, Gurgaon me rehti hu. Maine 2026-07-01 ko SuperTech Electronics Noida se 35,000 Rupees me ek washing machine kharidi thi. Delivery ke baad pata chala ki machine defective hai aur spin nahi kar rahi. Maine unse replacement manga par unhone refuse kar diya. Please help me get a refund of my Rs. 35,000."
+  },
+  {
+    label: "Labour (Hinglish)",
+    text: "Mera naam Amit Sharma hai, employee id EMP-4091. Main WebScale Solutions Pvt. Ltd., Gurgaon me software engineer tha. Mera director Vijay Shekhar ne mera June 2026 ka salary Rs 1,80,000 hold kar diya hai. Maine 2026-06-30 ko apna notice period serve karke resign kar diya tha par unhone salary nahi di. Please issue a legal notice."
+  },
+  {
+    label: "Tenant (Hinglish)",
+    text: "Mera naam Rohan Verma hai. Main Flat 304, Maple Heights, HSR Layout, Bengaluru me rent pe rehta tha. Rent agreement date 2025-06-01 thi. Maine 2026-05-31 ko flat vacate kar diya aur keys hand over kar di. Mera landlord K. R. Murthy mera security deposit Rs 1,00,000 wapas nahi de raha hai. Mera monthly rent 25,000 tha."
+  }
+];
+
+export const Chat: React.FC<ChatProps> = ({ onSubmit, onBack, loading, error, language }) => {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,10 +65,26 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }
   };
 
   const isHindi = language.trim().toLowerCase() === "hindi";
-  const examples = isHindi ? EXAMPLES_HI : EXAMPLES_EN;
+  const isHinglish = language.trim().toLowerCase() === "hinglish";
+  
+  const getExamples = () => {
+    if (isHindi) return EXAMPLES_HI;
+    if (isHinglish) return EXAMPLES_HINGLISH;
+    return EXAMPLES_EN;
+  };
+  
+  const examples = getExamples();
 
   return (
     <div className="max-w-2xl mx-auto py-10 px-4">
+      {/* Back to Home Button */}
+      <button
+        onClick={onBack}
+        className="mb-6 flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        {isHindi ? "मुख्य पृष्ठ पर वापस जाएं" : isHinglish ? "Home page par wapas" : "Back to Home"}
+      </button>
       
       {/* Disclaimer Box at the Very Top */}
       <div className="bg-amber-50 border border-amber-300 rounded-lg p-4 mb-8 flex gap-3 text-amber-800 shadow-sm">
@@ -65,11 +97,13 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }
       <div className="text-center mb-8">
         <h1 className="text-4xl font-extrabold text-slate-800 tracking-tight flex items-center justify-center gap-3">
           <MessageSquare className="w-10 h-10 text-indigo-600" />
-          {isHindi ? "लीगलएड शिकायत पंजीकरण" : "LegalAId Grievance Intake"}
+          {isHindi ? "लीगलएड शिकायत पंजीकरण" : isHinglish ? "LegalAId Grievance Intake" : "LegalAId Grievance Intake"}
         </h1>
         <p className="mt-2 text-base text-slate-600 leading-relaxed">
           {isHindi 
             ? "अपनी कानूनी समस्या को सरल शब्दों में लिखें। हमारा विश्लेषण पाइपलाइन आपके अधिकारों की पहचान करेगा, लागू धाराओं का सत्यापन करेगा और एक पेशेवर कानूनी नोटिस का मसौदा तैयार करेगा।"
+            : isHinglish 
+            ? "Apni legal problem ko simple words me likhe. Humara system aapke rights identify karega, sections verify karega aur legal notice draft karega." 
             : "Describe your legal issue in simple words. Our analysis pipeline will identify your rights, verify applicable sections from our knowledge base, and draft a professional legal notice."}
         </p>
       </div>
@@ -77,7 +111,7 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="grievance" className="block text-sm font-semibold text-slate-700 mb-2">
-            {isHindi ? "आपकी शिकायत का विवरण" : "Your Grievance Description"}
+            {isHindi ? "आपकी शिकायत का विवरण (Tell us what happened)" : isHinglish ? "Apki Grievance Description" : "Tell us what happened"}
           </label>
           <textarea
             id="grievance"
@@ -86,20 +120,24 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }
             className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800 bg-white placeholder-slate-400 text-base shadow-sm resize-y"
             placeholder={isHindi 
               ? "अपनी समस्या यहाँ लिखें... (खाली सबमिशन की अनुमति नहीं है)"
-              : "Type your issue here... (Empty submission is not allowed)"}
+              : isHinglish 
+              ? "Apni problem yahan likhe... (Khali submission allowed nahi hai)" 
+              : "Describe your legal problem here... (e.g. unpaid salary, tenant security deposit, defective product)"}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <p className="text-xs text-slate-400 mt-1">
             {isHindi 
               ? "* केवल उपभोक्ता शिकायतें, वेतन भुगतान दावे और किरायेदार सुरक्षा जमा विवाद समर्थित हैं।"
+              : isHinglish 
+              ? "* Sirf consumer complaints, unpaid employee wages, aur tenant security deposit disputes supported hain." 
               : "* Only consumer complaints, employee unpaid wages, and landlord tenant security deposit disputes are currently supported."}
           </p>
         </div>
 
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+            <ShieldAlert className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
             <div>
               <h3 className="text-sm font-semibold text-red-800">
                 {isHindi ? "विश्लेषण त्रुटि" : "Analysis Error"}
@@ -120,14 +158,14 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, loading, error, language }
               {isHindi ? "विश्लेषण पाइपलाइन चल रही है..." : "Running Analysis Pipeline..."}
             </>
           ) : (
-            isHindi ? "शिकायत का विश्लेषण करें" : "Analyze Grievance"
+            isHindi ? "शिकायत का विश्लेषण करें" : isHinglish ? "Grievance Analyze karein" : "Analyze Grievance"
           )}
         </button>
       </form>
 
       <div className="mt-10 border-t border-slate-200 pt-6">
         <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
-          {isHindi ? "या एक नमूना परिदृश्य आज़माएं:" : "Or try a sample scenario:"}
+          {isHindi ? "या एक नमूना परिदृश्य आज़माएं:" : isHinglish ? "Ya koi sample try karein:" : "Or try a sample scenario:"}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {examples.map((ex, idx) => (

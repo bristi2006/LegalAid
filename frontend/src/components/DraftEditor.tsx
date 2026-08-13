@@ -50,6 +50,11 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
   const [exporting, setExporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Citation detection
+  const isCitationEdited = applicableSections && applicableSections.some(
+    sec => sec.verified && (!draftText.includes(sec.section) || !draftText.includes(sec.act))
+  );
+
   const handleRegenerate = async () => {
     setDrafting(true);
     setError(null);
@@ -114,7 +119,7 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
         className="mb-6 flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to Results
+        Back to Next Steps
       </button>
 
       {/* Top Disclaimer Box */}
@@ -151,37 +156,37 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
             <div className="grid grid-cols-1 gap-2">
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Sender Name"
                 value={senderName}
                 onChange={e => setSenderName(e.target.value)}
               />
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Address"
                 value={senderAddress}
                 onChange={e => setSenderAddress(e.target.value)}
               />
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Contact Details"
                 value={senderContact}
                 onChange={e => setSenderContact(e.target.value)}
               />
-              {templateId.startsWith("labour") && (
+              {templateId.includes("labour") && (
                 <>
                   <input
                     type="text"
-                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                     placeholder="Employee Designation"
                     value={senderDesignation}
                     onChange={e => setSenderDesignation(e.target.value)}
                   />
                   <input
                     type="text"
-                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                     placeholder="Employee ID"
                     value={senderEmpId}
                     onChange={e => setSenderEmpId(e.target.value)}
@@ -197,37 +202,37 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
             <div className="grid grid-cols-1 gap-2">
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Recipient Name"
                 value={recipientName}
                 onChange={e => setRecipientName(e.target.value)}
               />
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Address"
                 value={recipientAddress}
                 onChange={e => setRecipientAddress(e.target.value)}
               />
               <input
                 type="text"
-                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                 placeholder="Contact Details"
                 value={recipientContact}
                 onChange={e => setRecipientContact(e.target.value)}
               />
-              {templateId.startsWith("labour") && (
+              {templateId.includes("labour") && (
                 <>
                   <input
                     type="text"
-                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                     placeholder="Company Name"
                     value={recipientCompany}
                     onChange={e => setRecipientCompany(e.target.value)}
                   />
                   <input
                     type="text"
-                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
                     placeholder="Representative Designation"
                     value={recipientDesignation}
                     onChange={e => setRecipientDesignation(e.target.value)}
@@ -241,7 +246,7 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Facts (One per line)</h3>
             <textarea
-              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
               rows={4}
               placeholder="Enter timeline / facts..."
               value={facts}
@@ -253,7 +258,7 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Demand / Remedy</h3>
             <textarea
-              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500"
+              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
               rows={3}
               placeholder="Enter remedy..."
               value={remedyText}
@@ -308,6 +313,16 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
               )}
             </button>
           </div>
+
+          {/* Citation Edited Warning */}
+          {isCitationEdited && (
+            <div className="bg-amber-50 border-l-4 border-amber-500 p-3 rounded text-xs text-amber-800 flex items-start gap-2">
+              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold">⚠️ Warning:</span> This is a verified legal citation. Changing it may affect legal accuracy.
+              </div>
+            </div>
+          )}
 
           <textarea
             className="w-full h-[65vh] p-4 text-xs font-mono border border-slate-300 rounded focus:ring-1 focus:ring-indigo-500 bg-slate-50 text-slate-800 leading-relaxed overflow-y-auto resize-none"
