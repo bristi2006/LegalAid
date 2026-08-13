@@ -130,6 +130,25 @@ const api = {
    */
   exportPdf: (textContent: string): Promise<Blob> =>
     fetchBlob("/export-pdf", { text_content: textContent }),
+
+  /**
+   * POST /transcribe
+   * Sends audio blob for backend fallback transcription.
+   */
+  transcribeAudio: async (audioBlob: Blob, language = "English"): Promise<{ text: string }> => {
+    const formData = new FormData();
+    formData.append("file", audioBlob, "recording.webm");
+    formData.append("language", language);
+
+    const res = await fetch(`${API_BASE_URL}/transcribe`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) {
+      throw new ApiError(`Transcription failed (${res.status})`, res.status);
+    }
+    return await res.json();
+  },
 };
 
 export default api;

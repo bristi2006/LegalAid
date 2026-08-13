@@ -27,7 +27,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
@@ -43,6 +43,7 @@ from backend.app.services.explain import explain_rights, ExplanationOutput
 from backend.app.services.verify import verify_citations
 from backend.app.services.pdf_gen import generate_pdf
 from backend.app.services.translate import translate_notice_to_hindi
+from backend.app.services.transcribe import transcribe_audio_input
 from backend.app.utils.template_renderer import render_document
 
 # New v2/v3 engines
@@ -829,6 +830,31 @@ def export_notice_pdf(request: ExportPdfRequest):
     except Exception as e:
         logger.error("PDF generation failed: %s", e)
         raise LegalAidException("DOCUMENT_GENERATION_FAILURE", f"PDF generation failed: {e}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# POST /transcribe  [Audio Speech-to-Text Fallback]
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.post("/transcribe")
+async def transcribe_audio(
+    file: UploadFile = File(...),
+    language: str = Form("English"),
+):
+    """
+    Accepts an uploaded audio file (webm/wav/mp3) and transcribes spoken grievance into text.
+    """
+    try:
+        content = await file.read()
+        if not content:
+            raise LegalAidException("INVALID_INPUT", "Uploaded audio file is empty.")
+
+        mime_type = file.content_type or "audio/webm"
+        transcribed_text = await transcribe_audio_input(content, mime_type=mime_type, language=language)
+        return {"text": transcribed_text, "language": language}
+    except Exception as e:
+        logger.error("Transcription endpoint failed: %s", e)
+        raise LegalAidException("TRANSCRIPTION_FAILURE", f"Speech-to-text failed: {e}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

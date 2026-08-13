@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MessageSquare, ShieldAlert, Loader, ArrowLeft } from "lucide-react";
+import { VoiceRecorder } from "./VoiceRecorder";
 
 interface ChatProps {
   onSubmit: (query: string) => void;
@@ -110,9 +111,16 @@ export const Chat: React.FC<ChatProps> = ({ onSubmit, onBack, loading, error, la
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="grievance" className="block text-sm font-semibold text-slate-700 mb-2">
-            {isHindi ? "आपकी शिकायत का विवरण (Tell us what happened)" : isHinglish ? "Apki Grievance Description" : "Tell us what happened"}
-          </label>
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <label htmlFor="grievance" className="text-sm font-semibold text-slate-700">
+              {isHindi ? "आपकी शिकायत का विवरण (Tell us what happened)" : isHinglish ? "Apki Grievance Description" : "Tell us what happened"}
+            </label>
+            <VoiceRecorder
+              language={language}
+              disabled={loading}
+              onTranscript={(spokenText) => setQuery((prev) => (prev ? `${prev} ${spokenText}` : spokenText))}
+            />
+          </div>
           <textarea
             id="grievance"
             rows={6}
