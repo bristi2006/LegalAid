@@ -8,21 +8,22 @@ import { EvidenceAndActions } from "./components/EvidenceAndActions";
 import { DraftEditor } from "./components/DraftEditor";
 import { SafetyLockdown } from "./components/SafetyLockdown";
 import { Home } from "./components/Home";
+import api from "./services/api";
 
-type Step = 
+type Step =
   | "home"
-  | "idle" 
-  | "analyzing" 
-  | "needs_information" 
-  | "case_ready" 
-  | "show_rights" 
-  | "show_laws" 
-  | "show_evidence" 
-  | "show_actions" 
-  | "document_editor" 
+  | "idle"
+  | "analyzing"
+  | "needs_information"
+  | "case_ready"
+  | "show_rights"
+  | "show_laws"
+  | "show_evidence"
+  | "show_actions"
+  | "document_editor"
   | "pdf_ready";
 
-const API_BASE = "http://localhost:8000";
+// All API calls go through ./services/api.ts (reads VITE_API_BASE_URL env var)
 
 // Route mappings for Hash Routing
 const stepToHash: Record<Step, string> = {
@@ -56,20 +57,20 @@ function App() {
   const [step, setStep] = useState<Step>("home");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Intake data states
   const [language, setLanguage] = useState<string>("English");
   const [userQuery, setUserQuery] = useState<string>("");
-  
+
   // Case context and analysis results
   const [analysis, setAnalysis] = useState<any>(null);
-  
+
   // Missing details state
   const [missingFacts, setMissingFacts] = useState<string[]>([]);
-  
+
   // Contradiction state
   const [contradiction, setContradiction] = useState<{ field: string; values: string[] } | null>(null);
-  
+
   // Safety & Risk states
   const [riskLevel, setRiskLevel] = useState<"low" | "high">("low");
   const [safetyReason, setSafetyReason] = useState<string>("");
@@ -93,7 +94,7 @@ function App() {
     };
 
     window.addEventListener("hashchange", handleHashChange);
-    
+
     // Set initial route
     if (!window.location.hash) {
       window.location.hash = "#/home";
@@ -115,19 +116,19 @@ function App() {
     const lowercaseQuery = userQueryText.toLowerCase();
 
     // 1. Check for immediate high risk / safety lockout triggers (Flow 7)
-    const isHighRisk = 
-      /\bviolence\b/.test(lowercaseQuery) || 
-      /\bthreat\b/.test(lowercaseQuery) || 
-      /\bphysical\b/.test(lowercaseQuery) || 
-      /\bforce\b/.test(lowercaseQuery) || 
+    const isHighRisk =
+      /\bviolence\b/.test(lowercaseQuery) ||
+      /\bthreat\b/.test(lowercaseQuery) ||
+      /\bphysical\b/.test(lowercaseQuery) ||
+      /\bforce\b/.test(lowercaseQuery) ||
       /\bharm\b/.test(lowercaseQuery) ||
       lowercaseQuery.includes("evict by force");
 
     if (isHighRisk) {
       setRiskLevel("high");
       setSafetyReason(
-        userQueryText.toLowerCase().includes("violence") 
-          ? "Immediate threat of physical violence reported" 
+        userQueryText.toLowerCase().includes("violence")
+          ? "Immediate threat of physical violence reported"
           : "Landlord attempting eviction by force without notice"
       );
       changeStep("needs_information");
@@ -174,22 +175,8 @@ function App() {
       if (extraParameters.employment_status) {
         enrichedQuery += `\nEmployment status: ${extraParameters.employment_status}.`;
       }
-      
-      const response = await fetch(`${API_BASE}/analyze`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          user_input: enrichedQuery,
-          language: language
-        }),
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Analysis request failed.");
-      }
-      
-      const data = await response.json();
+
+      const data = await api.analyze(enrichedQuery, language) as any;
       setAnalysis(data);
 
       // Determine Risk status based on details (Flow 9)
@@ -218,43 +205,32 @@ function App() {
     if (resolvedContr) {
       finalQuery += `\nConfirmed correct disputed amount is: ${resolvedContr}.`;
     }
-    
+
     await executePipeline(finalQuery, answers);
   };
 
   const handleUpdateCaseFacts = async (updatedDetails: any) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE}/draft`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          template_id: `${analysis.classification.domain}_${analysis.classification.issue}`,
-          date: new Date().toISOString().split("T")[0],
-          sender: updatedDetails.sender,
-          recipient: updatedDetails.recipient,
-          relevant_facts: updatedDetails.relevant_facts,
-          issue_description: analysis.classification.issue.replace(/_/g, " "),
-          applicable_sections: analysis.verified_sections,
-          remedy: analysis.remedy,
-          extra_details: updatedDetails.extra_details || {},
-          language: language
-        })
+      const data = await api.draft({
+        template_id: `${analysis.classification.domain}_${analysis.classification.issue}`,
+        date: new Date().toISOString().split("T")[0],
+        sender: updatedDetails.sender,
+        recipient: updatedDetails.recipient,
+        relevant_facts: updatedDetails.relevant_facts,
+        issue_description: analysis.classification.issue.replace(/_/g, " "),
+        applicable_sections: analysis.verified_sections,
+        remedy: analysis.remedy,
+        extra_details: updatedDetails.extra_details || {},
+        language: language,
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Updating draft failed.");
-      }
-
-      const data = await response.json();
       setAnalysis({
         ...analysis,
         classification: {
           ...analysis.classification,
-          extracted_details: updatedDetails
+          extracted_details: updatedDetails,
         },
-        rendered_document: data.rendered_document
+        rendered_document: data.rendered_document,
       });
     } catch (err: any) {
       setError(err.message || "Failed to update case parameters.");
@@ -264,37 +240,12 @@ function App() {
   };
 
   const handleDraftRegenerate = async (payload: any): Promise<string> => {
-    const response = await fetch(`${API_BASE}/draft`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        ...payload,
-        language: language
-      }),
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "Draft regeneration failed.");
-    }
-    
-    const data = await response.json();
+    const data = await api.draft({ ...payload, language });
     return data.rendered_document;
   };
 
   const handleExportPdf = async (textContent: string): Promise<Blob> => {
-    const response = await fetch(`${API_BASE}/export-pdf`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text_content: textContent }),
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "PDF generation request failed.");
-    }
-    
-    return await response.blob();
+    return api.exportPdf(textContent);
   };
 
   const getEvidenceChecklist = () => {
@@ -350,11 +301,10 @@ function App() {
         <div className="max-w-4xl mx-auto flex items-center justify-between overflow-x-auto whitespace-nowrap scrollbar-none gap-2 text-xs font-semibold text-slate-400">
           {stages.map((stage, idx) => (
             <div key={idx} className="flex items-center gap-2">
-              <span className={`flex items-center justify-center w-5 h-5 rounded-full border text-[10px] ${
-                stage.active
+              <span className={`flex items-center justify-center w-5 h-5 rounded-full border text-[10px] ${stage.active
                   ? "bg-indigo-600 border-indigo-600 text-white font-extrabold"
                   : "border-slate-300 text-slate-500"
-              }`}>
+                }`}>
                 {idx + 1}
               </span>
               <span className={stage.active ? "text-indigo-600 font-bold" : "text-slate-500"}>{stage.name}</span>
@@ -368,11 +318,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      
+
       {/* Header Navbar */}
       <header className="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div 
+          <div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => {
               changeStep("home");
@@ -383,7 +333,7 @@ function App() {
             <Scale className="w-6 h-6 text-indigo-600" />
             <span className="font-extrabold text-xl text-slate-800 tracking-tight">LegalAId</span>
           </div>
-          
+
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <label htmlFor="lang-select" className="text-xs font-semibold text-slate-500">Language / भाषा / Bhaasha:</label>
@@ -398,7 +348,7 @@ function App() {
                 <option value="Hinglish">Hinglish</option>
               </select>
             </div>
-            
+
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               Pipeline Active
@@ -412,19 +362,19 @@ function App() {
 
       {/* Main Container Content */}
       <main className="flex-1 w-full">
-        
+
         {step === "home" && (
-          <Home 
-            onStart={() => changeStep("idle")} 
+          <Home
+            onStart={() => changeStep("idle")}
             language={language}
           />
         )}
 
         {step === "idle" && (
-          <Chat 
-            onSubmit={handleAnalyze} 
+          <Chat
+            onSubmit={handleAnalyze}
             onBack={() => changeStep("home")}
-            loading={loading} 
+            loading={loading}
             error={error}
             language={language}
           />

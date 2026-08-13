@@ -6,6 +6,7 @@ Replaces scattered os.environ.get() calls with a single validated Settings objec
 Startup will raise immediately if a required key is missing.
 """
 import os
+from typing import List
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,6 +16,13 @@ class Settings:
     # ── Gemini ────────────────────────────────────────────────────────────
     GEMINI_API_KEY: str = os.environ.get("GEMINI_API_KEY", "")
     GEMINI_MODEL: str = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+
+    # ── CORS ──────────────────────────────────────────────────────────────
+    # Set FRONTEND_URL in .env to restrict CORS to your real frontend origin.
+    # Supports comma-separated values for multiple origins.
+    # Example: FRONTEND_URL=https://legalaid.example.com
+    # Leave blank to fall back to localhost dev origins.
+    FRONTEND_URL: str = os.environ.get("FRONTEND_URL", "")
 
     # ── Input guards ──────────────────────────────────────────────────────
     MAX_INPUT_CHARS: int = 5_000
@@ -36,6 +44,24 @@ class Settings:
             "..", "data", "NotoSansDevanagari-Regular.ttf"
         )
     )
+
+    def get_cors_origins(self) -> List[str]:
+        """
+        Returns allowed CORS origins.
+        - If FRONTEND_URL is set → use it (locked-down, for production).
+        - Otherwise → allow common localhost ports (development).
+        Supports comma-separated multiple origins in FRONTEND_URL.
+        """
+        if self.FRONTEND_URL:
+            return [url.strip() for url in self.FRONTEND_URL.split(",") if url.strip()]
+        # Development fallback — allow all common local dev ports
+        return [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "http://localhost:8080",
+        ]
 
     def validate(self) -> None:
         """Raise at startup if critical configuration is missing."""
