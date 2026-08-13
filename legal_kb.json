@@ -3,7 +3,6 @@
   "last_verified": "2026-08-13",
   "note": "All section numbers below were checked against India Code / official bare-act text or primary law-firm summaries of the bare act as of Aug 2026. Where a section could not be independently confirmed, verified is set to false and the entry should be re-checked by a human before production use. The four Labour Codes (Code on Wages 2019, Industrial Relations Code 2020, Occupational Safety Health and Working Conditions Code 2020, Code on Social Security 2020) came into force on 21 November 2025, replacing the older labour statutes (Payment of Wages Act, Minimum Wages Act, Industrial Disputes Act, Payment of Bonus Act etc.), but the detailed Central and State Rules under the Codes were still being finalised as of early 2026, so some procedural details may change.",
   "issues": [
-
     {
       "domain": "consumer",
       "issue": "defective_product",
@@ -21,21 +20,54 @@
           "section": "Section 2(10)",
           "meaning": "Defines 'defect' as any fault, imperfection or shortcoming in the quality, quantity, potency, purity or standard of goods required to be maintained by law or claimed by the seller.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(10)",
+          "plain_language_summary": "Defines 'defect' as any fault, imperfection or shortcoming in the quality, quantity, potency, purity or standard of goods required to be maintained by law or claimed by the seller.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 35",
           "meaning": "Lets a consumer file a complaint before the District Consumer Commission, normally within two years of the defect coming to light.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 35",
+          "plain_language_summary": "Lets a consumer file a complaint before the District Consumer Commission, normally within two years of the defect coming to light.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 39",
           "meaning": "Lists the reliefs the District Commission can order: replacement, repair, refund, or compensation for a defective product.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 39",
+          "plain_language_summary": "Lists the reliefs the District Commission can order: replacement, repair, refund, or compensation for a defective product.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Send a written notice/legal notice to the seller/manufacturer asking for repair, replacement or refund within a reasonable time; if refused, file a complaint on the e-Daakhil portal or before the District Consumer Disputes Redressal Commission.",
@@ -43,7 +75,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "product_not_delivered",
@@ -61,21 +92,54 @@
           "section": "Section 2(11)",
           "meaning": "Non-delivery of a paid-for product/service is treated as a 'deficiency' in service - any shortcoming in the manner or performance required by the seller/platform.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(11)",
+          "plain_language_summary": "Non-delivery of a paid-for product/service is treated as a 'deficiency' in service - any shortcoming in the manner or performance required by the seller/platform.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection (E-Commerce) Rules, 2020",
           "section": "Rule 5",
           "meaning": "Requires e-commerce entities to clearly disclose delivery timelines and to honour them; failure is a ground for complaint.",
           "source": "Ministry of Consumer Affairs",
-          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020"
+          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020",
+          "act_name": "Consumer Protection (E-Commerce) Rules, 2020",
+          "title": "Rule 5",
+          "plain_language_summary": "Requires e-commerce entities to clearly disclose delivery timelines and to honour them; failure is a ground for complaint.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Consumer Affairs",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 39",
           "meaning": "District Commission can order a refund plus compensation for the delay and mental agony caused.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 39",
+          "plain_language_summary": "District Commission can order a refund plus compensation for the delay and mental agony caused.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Ask the seller/platform for the order status and a refund deadline in writing; escalate to the platform's grievance officer, then to the District Consumer Commission or the National Consumer Helpline (1915) if unresolved.",
@@ -83,7 +147,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "refund_not_given",
@@ -101,14 +164,36 @@
           "section": "Section 2(47)(viii)",
           "meaning": "Treats it as an unfair trade practice when a seller, after taking back defective goods or discontinuing a deficient service, refuses to refund the amount within the promised time (or 30 days if nothing was stipulated).",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(47)(viii)",
+          "plain_language_summary": "Treats it as an unfair trade practice when a seller, after taking back defective goods or discontinuing a deficient service, refuses to refund the amount within the promised time (or 30 days if nothing was stipulated).",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 39",
           "meaning": "Empowers the District Commission to direct the refund of the price along with interest and compensation.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 39",
+          "plain_language_summary": "Empowers the District Commission to direct the refund of the price along with interest and compensation.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Send a written refund demand with proof of payment/cancellation and a deadline; if ignored, file a consumer complaint for refund plus interest and compensation.",
@@ -116,7 +201,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "service_deficiency",
@@ -134,14 +218,36 @@
           "section": "Section 2(11)",
           "meaning": "Defines 'deficiency' as any fault, imperfection, shortcoming or inadequacy in the quality, nature or manner of performance of a service that is required under law or contract, including banking, insurance and financial services.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(11)",
+          "plain_language_summary": "Defines 'deficiency' as any fault, imperfection, shortcoming or inadequacy in the quality, nature or manner of performance of a service that is required under law or contract, including banking, insurance and financial services.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 35",
           "meaning": "Consumer can file a complaint before the District Commission for deficiency in service, generally within two years of the cause of action.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 35",
+          "plain_language_summary": "Consumer can file a complaint before the District Commission for deficiency in service, generally within two years of the cause of action.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Raise a written complaint with the service provider's grievance/nodal officer first (mandatory for banking/insurance/telecom); if unresolved, approach the sector ombudsman (e.g. RBI Banking Ombudsman, IRDAI) or the Consumer Commission.",
@@ -149,7 +255,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "overcharging",
@@ -167,14 +272,36 @@
           "section": "Section 2(6)",
           "meaning": "Being 'charged a price in excess of the price fixed by or under any law, or displayed on the goods, or on the package, or agreed between the parties' is expressly recognised as a ground for a consumer complaint.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(6)",
+          "plain_language_summary": "Being 'charged a price in excess of the price fixed by or under any law, or displayed on the goods, or on the package, or agreed between the parties' is expressly recognised as a ground for a consumer complaint.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 39",
           "meaning": "District Commission can order the excess amount charged to be returned along with compensation.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 39",
+          "plain_language_summary": "District Commission can order the excess amount charged to be returned along with compensation.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Keep the bill/receipt showing the MRP and the amount charged; ask for a refund of the excess in writing, and complain to the Consumer Commission or National Consumer Helpline if refused.",
@@ -182,7 +309,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "false_or_misleading_advertising",
@@ -200,21 +326,54 @@
           "section": "Section 2(28)",
           "meaning": "Defines 'misleading advertisement' as one that falsely describes a product/service, gives a false guarantee, or conceals material information likely to affect a consumer's decision.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(28)",
+          "plain_language_summary": "Defines 'misleading advertisement' as one that falsely describes a product/service, gives a false guarantee, or conceals material information likely to affect a consumer's decision.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 21",
           "meaning": "Empowers the Central Consumer Protection Authority (CCPA) to investigate false/misleading advertisements and impose penalties (up to ₹10 lakh, ₹50 lakh for repeat offences) on the manufacturer, service provider or endorser, including a ban on endorsement.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 21",
+          "plain_language_summary": "Empowers the Central Consumer Protection Authority (CCPA) to investigate false/misleading advertisements and impose penalties (up to ₹10 lakh, ₹50 lakh for repeat offences) on the manufacturer, service provider or endorser, including a ban on endorsement.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 89",
           "meaning": "Makes causing a false or misleading advertisement prejudicial to consumers a criminal offence, punishable with up to 2 years' imprisonment and a fine up to ₹10 lakh (higher for repeat offences).",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 89",
+          "plain_language_summary": "Makes causing a false or misleading advertisement prejudicial to consumers a criminal offence, punishable with up to 2 years' imprisonment and a fine up to ₹10 lakh (higher for repeat offences).",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Preserve the advertisement (screenshot/recording); file a complaint with the CCPA (via the National Consumer Helpline/e-Daakhil) or the District Consumer Commission for compensation.",
@@ -222,7 +381,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "unfair_contract_terms",
@@ -240,14 +398,36 @@
           "section": "Section 2(46)",
           "meaning": "Defines 'unfair contract' as a contract between a trader/manufacturer and a consumer whose terms cause a significant change in the consumer's rights - e.g. excessive security deposits, disproportionate penalties, one-sided termination rights, or unilateral alteration of terms.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(46)",
+          "plain_language_summary": "Defines 'unfair contract' as a contract between a trader/manufacturer and a consumer whose terms cause a significant change in the consumer's rights - e.g. excessive security deposits, disproportionate penalties, one-sided termination rights, or unilateral alteration of terms.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 39",
           "meaning": "Allows the District Commission to declare unfair contract terms void and grant appropriate relief.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 39",
+          "plain_language_summary": "Allows the District Commission to declare unfair contract terms void and grant appropriate relief.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Identify and highlight the specific one-sided clause in writing to the trader and ask for it to be removed/amended; if refused, file a complaint before the Consumer Commission seeking the term be declared void.",
@@ -255,7 +435,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "product_caused_injury_or_damage",
@@ -273,14 +452,36 @@
           "section": "Section 2(34)",
           "meaning": "Defines 'product liability' as the responsibility of a product manufacturer, product seller or product service provider to compensate a consumer for harm caused by a defective product or a related deficiency in service.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(34)",
+          "plain_language_summary": "Defines 'product liability' as the responsibility of a product manufacturer, product seller or product service provider to compensate a consumer for harm caused by a defective product or a related deficiency in service.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Sections 82-87 (Chapter VI - Product Liability)",
           "meaning": "Sets out when a manufacturer, seller and service provider are each liable for harm from a defective product (manufacturing defect, design defect, inadequate warning/instructions, deviation from specifications), and the compensation a claimant can seek.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Sections 82-87 (Chapter VI - Product Liability)",
+          "plain_language_summary": "Sets out when a manufacturer, seller and service provider are each liable for harm from a defective product (manufacturing defect, design defect, inadequate warning/instructions, deviation from specifications), and the compensation a claimant can seek.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Preserve medical records/photos/the product itself as evidence; file a 'product liability action' before the appropriate Consumer Commission claiming compensation for injury, property damage and mental agony.",
@@ -288,7 +489,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "consumer",
       "issue": "ecommerce_consumer_issue",
@@ -306,14 +506,36 @@
           "section": "Rule 5",
           "meaning": "Requires e-commerce entities to disclose seller details, return/refund/exchange/warranty terms, and grievance officer contact, and to acknowledge complaints within 48 hours and resolve within one month.",
           "source": "Ministry of Consumer Affairs",
-          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020"
+          "source_url": "https://consumeraffairs.nic.in/acts-rules/rules/consumer-protection-e-commerce-rules-2020",
+          "act_name": "Consumer Protection (E-Commerce) Rules, 2020",
+          "title": "Rule 5",
+          "plain_language_summary": "Requires e-commerce entities to disclose seller details, return/refund/exchange/warranty terms, and grievance officer contact, and to acknowledge complaints within 48 hours and resolve within one month.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Consumer Affairs",
+          "verified": true
         },
         {
           "act": "Consumer Protection Act, 2019",
           "section": "Section 2(47)",
           "meaning": "Selling counterfeit/misrepresented goods on a platform is an unfair trade practice, actionable against the seller and, in some cases, the marketplace.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15256",
+          "act_name": "Consumer Protection Act, 2019",
+          "title": "Section 2(47)",
+          "plain_language_summary": "Selling counterfeit/misrepresented goods on a platform is an unfair trade practice, actionable against the seller and, in some cases, the marketplace.",
+          "domain": "consumer",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2020-07-20",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Complain first to the platform's designated grievance officer (mandatory under the E-Commerce Rules) with order/payment proof; escalate to the National Consumer Helpline (1915) or Consumer Commission if unresolved within a month.",
@@ -321,7 +543,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "salary_not_paid",
@@ -339,14 +560,36 @@
           "section": "Section 17",
           "meaning": "Requires an employer to pay wages within a fixed time limit (usually by the 7th/10th of the following wage period), and pay full dues within two working days if the employee resigns, is removed, dismissed or retrenched.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 17",
+          "plain_language_summary": "Requires an employer to pay wages within a fixed time limit (usually by the 7th/10th of the following wage period), and pay full dues within two working days if the employee resigns, is removed, dismissed or retrenched.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Code on Wages, 2019",
           "section": "Section 15",
           "meaning": "Requires wages to be paid in cash, cheque or directly into the employee's bank account - unpaid wages remain a legally recoverable due.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 15",
+          "plain_language_summary": "Requires wages to be paid in cash, cheque or directly into the employee's bank account - unpaid wages remain a legally recoverable due.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Send a written wage-recovery notice to the employer; if unresolved, file a claim before the authority notified under the Code on Wages (labour commissioner's office) or approach the Industrial Relations Code's dispute-resolution machinery.",
@@ -354,7 +597,6 @@
       "jurisdiction_note": "Detailed Central and State Rules under the Labour Codes were still being finalised as of early 2026; procedural timelines for filing claims may vary by state until then.",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "salary_paid_late",
@@ -372,14 +614,36 @@
           "section": "Section 17",
           "meaning": "Fixes the outer time limit within which wages must be paid after the end of a wage period (daily/weekly/fortnightly/monthly), and lets the appropriate Government prescribe stricter limits for certain establishments.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 17",
+          "plain_language_summary": "Fixes the outer time limit within which wages must be paid after the end of a wage period (daily/weekly/fortnightly/monthly), and lets the appropriate Government prescribe stricter limits for certain establishments.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Code on Wages, 2019",
           "section": "Section 16",
           "meaning": "Requires every employer to fix a wage period (not exceeding one month) so employees can know when payment is due.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 16",
+          "plain_language_summary": "Requires every employer to fix a wage period (not exceeding one month) so employees can know when payment is due.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Keep a record of actual payment dates versus due dates; raise the delay in writing with HR, and if it continues, file a complaint with the labour authority/Inspector-cum-Facilitator under the Code on Wages.",
@@ -387,7 +651,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "illegal_wage_deduction",
@@ -405,14 +668,36 @@
           "section": "Section 18",
           "meaning": "Lists the only permissible deductions from wages (fines, absence, damage/loss, advances, taxes, PF, etc.) and caps total deductions in any wage period at 50% of wages (up to 75% for cooperative society dues).",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 18",
+          "plain_language_summary": "Lists the only permissible deductions from wages (fines, absence, damage/loss, advances, taxes, PF, etc.) and caps total deductions in any wage period at 50% of wages (up to 75% for cooperative society dues).",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Code on Wages, 2019",
           "section": "Section 19",
           "meaning": "Regulates fines on employees - they must follow a fixed procedure, cannot be recovered in instalments beyond 90 days, and must be recorded in a register.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 19",
+          "plain_language_summary": "Regulates fines on employees - they must follow a fixed procedure, cannot be recovered in instalments beyond 90 days, and must be recorded in a register.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Ask the employer in writing for a written breakdown of the deduction and the legal ground for it; if unjustified or exceeds the cap, raise it with the Inspector-cum-Facilitator or the labour authority.",
@@ -420,7 +705,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "minimum_wage_violation",
@@ -438,14 +722,36 @@
           "section": "Section 6",
           "meaning": "Requires the appropriate Government to fix minimum rates of wages for scheduled employments; no employer can pay less than this fixed minimum.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 6",
+          "plain_language_summary": "Requires the appropriate Government to fix minimum rates of wages for scheduled employments; no employer can pay less than this fixed minimum.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Code on Wages, 2019",
           "section": "Section 9",
           "meaning": "Empowers the Central Government to fix a national 'floor wage'; state minimum wages cannot be lower than this floor.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 9",
+          "plain_language_summary": "Empowers the Central Government to fix a national 'floor wage'; state minimum wages cannot be lower than this floor.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Check the current State minimum wage notification for your job category; if underpaid, complain in writing to the employer, and file a claim before the labour authority for the wage shortfall.",
@@ -453,7 +759,6 @@
       "jurisdiction_note": "Minimum wage rates are notified separately by each State/Union Territory and revised periodically - the exact applicable rate must be checked against the current State notification.",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "overtime_not_paid",
@@ -471,14 +776,36 @@
           "section": "Section 14",
           "meaning": "Entitles an employee who works beyond the normal working hours to overtime wages at twice the normal rate of wages.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Section 14",
+          "plain_language_summary": "Entitles an employee who works beyond the normal working hours to overtime wages at twice the normal rate of wages.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Occupational Safety, Health and Working Conditions Code, 2020",
           "section": "Sections 25-32",
           "meaning": "Fix normal daily/weekly working hours (generally not more than 8 hours a day), require the worker's prior consent for overtime, and mandate overtime pay at twice the normal wage rate.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340",
+          "act_name": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "title": "Sections 25-32",
+          "plain_language_summary": "Fix normal daily/weekly working hours (generally not more than 8 hours a day), require the worker's prior consent for overtime, and mandate overtime pay at twice the normal wage rate.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Keep records of actual hours worked; request overtime payment in writing citing the applicable Code, and escalate to the labour authority/Inspector-cum-Facilitator if refused.",
@@ -486,7 +813,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "bonus_not_paid",
@@ -504,7 +830,18 @@
           "section": "Sections 26-41 (Chapter IV - Payment of Bonus)",
           "meaning": "Requires eligible employers to pay an annual bonus to eligible employees (subject to wage-ceiling and minimum service conditions), sets the minimum and maximum bonus percentage, and the timeline for payment.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15330",
+          "act_name": "Code on Wages, 2019",
+          "title": "Sections 26-41 (Chapter IV - Payment of Bonus)",
+          "plain_language_summary": "Requires eligible employers to pay an annual bonus to eligible employees (subject to wage-ceiling and minimum service conditions), sets the minimum and maximum bonus percentage, and the timeline for payment.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Confirm your eligibility (wage ceiling and minimum 30 working days in the accounting year) and raise a written demand for bonus with HR; escalate to the labour authority if refused despite eligibility.",
@@ -512,7 +849,6 @@
       "jurisdiction_note": "Exact wage-ceiling figures for bonus eligibility are notified/updated periodically and should be checked against the current notification.",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "wrongful_termination_or_retrenchment",
@@ -530,14 +866,36 @@
           "section": "Section 70",
           "meaning": "Bars retrenchment of a worker with one year or more of continuous service unless the worker is given one month's written notice (or pay in lieu), retrenchment compensation of about 15 days' average pay for every completed year of service, and the Government is informed.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329",
+          "act_name": "Industrial Relations Code, 2020",
+          "title": "Section 70",
+          "plain_language_summary": "Bars retrenchment of a worker with one year or more of continuous service unless the worker is given one month's written notice (or pay in lieu), retrenchment compensation of about 15 days' average pay for every completed year of service, and the Government is informed.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Industrial Relations Code, 2020",
           "section": "Section 53",
           "meaning": "Deems any dispute over an individual worker's discharge, dismissal, retrenchment or termination to be an 'industrial dispute', letting the worker seek conciliation/adjudication even without a union.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329",
+          "act_name": "Industrial Relations Code, 2020",
+          "title": "Section 53",
+          "plain_language_summary": "Deems any dispute over an individual worker's discharge, dismissal, retrenchment or termination to be an 'industrial dispute', letting the worker seek conciliation/adjudication even without a union.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Ask the employer in writing for the reason for termination and dues owed; if the notice/compensation conditions were not followed, raise a grievance and, if unresolved, an industrial dispute before the conciliation officer/Industrial Tribunal.",
@@ -545,7 +903,6 @@
       "jurisdiction_note": "Certain categories (e.g. probationers, fixed-term contract completion, voluntary retirement, misconduct-based dismissal after due enquiry) are treated differently under the Code - the exact facts determine which provisions apply.",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "workplace_grievance",
@@ -563,14 +920,36 @@
           "section": "Section 4",
           "meaning": "Makes it mandatory for every industrial establishment with 20 or more workers to set up one or more Grievance Redressal Committees, with equal representation of employer and workers, to resolve individual worker grievances.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15329",
+          "act_name": "Industrial Relations Code, 2020",
+          "title": "Section 4",
+          "plain_language_summary": "Makes it mandatory for every industrial establishment with 20 or more workers to set up one or more Grievance Redressal Committees, with equal representation of employer and workers, to resolve individual worker grievances.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         },
         {
           "act": "Occupational Safety, Health and Working Conditions Code, 2020",
           "section": "Section 22",
           "meaning": "Provides for a Safety Committee (in prescribed establishments) through which a worker can raise safety-related grievances, in addition to the Grievance Redressal Committee.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340",
+          "act_name": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "title": "Section 22",
+          "plain_language_summary": "Provides for a Safety Committee (in prescribed establishments) through which a worker can raise safety-related grievances, in addition to the Grievance Redressal Committee.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Submit a written grievance to the establishment's Grievance Redressal Committee (or HR if no committee exists); if unresolved within the prescribed time, escalate through a trade union to the conciliation officer.",
@@ -578,7 +957,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "labour",
       "issue": "employment_terms_or_working_conditions",
@@ -596,7 +974,18 @@
           "section": "Sections 6-12",
           "meaning": "Places a duty on every employer to issue a formal appointment letter to each employee, specifying designation, category, wages and social security details, and to maintain safe and healthy working conditions; employees not given a letter before the Code's commencement had to be issued one within three months.",
           "source": "India Code / PIB",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/15340",
+          "act_name": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "title": "Sections 6-12",
+          "plain_language_summary": "Places a duty on every employer to issue a formal appointment letter to each employee, specifying designation, category, wages and social security details, and to maintain safe and healthy working conditions; employees not given a letter before the Code's commencement had to be issued one within three months.",
+          "domain": "labour",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code / PIB",
+          "verified": true
         }
       ],
       "remedy": "Request a written appointment letter/employment contract from the employer citing the appointment-letter requirement; if refused, raise it with the labour authority/Inspector-cum-Facilitator.",
@@ -604,7 +993,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "security_deposit_not_returned",
@@ -622,14 +1010,36 @@
           "section": "Section 11",
           "meaning": "Caps the security deposit at two months' rent for residential premises (six months for non-residential) and requires the landlord to refund it when vacant possession is taken back, after lawful deductions only.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 11",
+          "plain_language_summary": "Caps the security deposit at two months' rent for residential premises (six months for non-residential) and requires the landlord to refund it when vacant possession is taken back, after lawful deductions only.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         },
         {
           "act": "Transfer of Property Act, 1882",
           "section": "Section 108",
           "meaning": "General law on the rights and liabilities of lessor and lessee, used as the fallback framework in states that have not adopted a tenancy-specific law.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338",
+          "act_name": "Transfer of Property Act, 1882",
+          "title": "Section 108",
+          "plain_language_summary": "General law on the rights and liabilities of lessor and lessee, used as the fallback framework in states that have not adopted a tenancy-specific law.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "1882-07-01",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Send a written demand for the deposit with the vacating date and any deduction breakdown requested; approach the Rent Authority/Rent Court (where the Model Tenancy Act or a state variant applies) or a civil/small-causes court otherwise.",
@@ -637,7 +1047,6 @@
       "jurisdiction_note": "The Model Tenancy Act, 2021 is a central 'model' law - it applies only in states/UTs that have specifically adopted it or enacted a similar law (e.g. Uttar Pradesh, Assam, Tamil Nadu, Andhra Pradesh, with others aligning rules). In states that have not adopted it, the relevant state Rent Control Act or general contract/property law governs instead.",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "illegal_eviction",
@@ -655,14 +1064,36 @@
           "section": "Section 21",
           "meaning": "Lists the only lawful grounds for eviction (non-payment of rent, unauthorised subletting, misuse of premises, landlord's genuine need for repair/reconstruction, etc.) and requires the landlord to approach the Rent Court - self-help eviction outside this process is not lawful.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 21",
+          "plain_language_summary": "Lists the only lawful grounds for eviction (non-payment of rent, unauthorised subletting, misuse of premises, landlord's genuine need for repair/reconstruction, etc.) and requires the landlord to approach the Rent Court - self-help eviction outside this process is not lawful.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         },
         {
           "act": "Bharatiya Nyaya Sanhita, 2023",
           "section": "Section 329 (Criminal trespass / house-trespass)",
           "meaning": "Forcibly entering or interfering with property in another's lawful possession (e.g. forcing entry, changing locks without due process) can amount to criminal trespass, which is a punishable offence.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/20062"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20062",
+          "act_name": "Bharatiya Nyaya Sanhita, 2023",
+          "title": "Section 329 (Criminal trespass / house-trespass)",
+          "plain_language_summary": "Forcibly entering or interfering with property in another's lawful possession (e.g. forcing entry, changing locks without due process) can amount to criminal trespass, which is a punishable offence.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Do not vacate under threat; send a written notice to the landlord citing the illegality, keep evidence (photos/witnesses), and file a police complaint for illegal trespass along with an application before the Rent Court/civil court for restoration of possession.",
@@ -670,7 +1101,6 @@
       "jurisdiction_note": "The Model Tenancy Act, 2021 applies only where adopted by the state. Where not adopted, the applicable state Rent Control Act (which also generally bars eviction except through due process) or general law applies.",
       "verified": false
     },
-
     {
       "domain": "tenant",
       "issue": "rent_increase_dispute",
@@ -688,7 +1118,18 @@
           "section": "Section 4",
           "meaning": "Requires the terms and periodicity of rent revision to be fixed in the written tenancy agreement itself, so any increase must follow what was agreed, not be unilateral.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 4",
+          "plain_language_summary": "Requires the terms and periodicity of rent revision to be fixed in the written tenancy agreement itself, so any increase must follow what was agreed, not be unilateral.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         }
       ],
       "remedy": "Check the written tenancy agreement for the agreed revision terms and notice period; if the increase doesn't comply, respond in writing disputing it and, if the state has adopted the Model Tenancy Act or a Rent Control Act, approach the Rent Authority/Rent Court.",
@@ -696,7 +1137,6 @@
       "jurisdiction_note": "Rent-increase rules vary significantly across states that have their own Rent Control Acts (some cap the percentage/frequency of increase); where the Model Tenancy Act is not adopted, the terms of the written agreement and applicable state law govern.",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "landlord_refuses_repairs",
@@ -714,7 +1154,18 @@
           "section": "Section 15",
           "meaning": "Divides repair and maintenance responsibilities between landlord and tenant (per the Act's schedule/agreement) - if the landlord fails to carry out their share, the tenant may get it done and deduct the cost from future rent.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 15",
+          "plain_language_summary": "Divides repair and maintenance responsibilities between landlord and tenant (per the Act's schedule/agreement) - if the landlord fails to carry out their share, the tenant may get it done and deduct the cost from future rent.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         }
       ],
       "remedy": "Send a written repair request to the landlord with a reasonable deadline and photos of the issue; if ignored, get the repair done and deduct documented costs from the next rent payment, or approach the Rent Authority/Court where applicable.",
@@ -722,7 +1173,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "essential_services_withheld",
@@ -740,7 +1190,18 @@
           "section": "Section 20",
           "meaning": "Prohibits a landlord/property manager from withholding essential supplies or services (water, electricity, cooking gas, lifts, etc.); the Rent Authority can order immediate restoration and impose a penalty, including compensation up to two months' rent to the tenant.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 20",
+          "plain_language_summary": "Prohibits a landlord/property manager from withholding essential supplies or services (water, electricity, cooking gas, lifts, etc.); the Rent Authority can order immediate restoration and impose a penalty, including compensation up to two months' rent to the tenant.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         }
       ],
       "remedy": "Document the cut-off with photos/dates and complain in writing to the landlord immediately; approach the Rent Authority for an urgent restoration order (or file a police complaint/civil suit for injunction where the Act doesn't apply).",
@@ -748,7 +1209,6 @@
       "jurisdiction_note": "Where the Model Tenancy Act is not adopted, most states still treat wilful cutting-off of water/electricity to a tenant in possession as an offence or civil wrong under local municipal/electricity laws and general tort law.",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "rent_receipt_not_provided",
@@ -766,7 +1226,18 @@
           "section": "Section 13",
           "meaning": "Requires the landlord to issue a receipt for the rent and other charges paid by the tenant.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 13",
+          "plain_language_summary": "Requires the landlord to issue a receipt for the rent and other charges paid by the tenant.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         }
       ],
       "remedy": "Request rent receipts in writing (email/SMS) each month so there is a paper trail; if refused, pay by bank transfer/UPI and keep the transaction record as proof, and escalate to the Rent Authority where the Act applies.",
@@ -774,7 +1245,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "landlord_or_tenant_breach",
@@ -792,14 +1262,36 @@
           "section": "Section 21",
           "meaning": "Lists breach-related grounds on which a landlord can seek eviction through the Rent Court, including subletting without written consent, non-payment of rent for two consecutive months, and misuse of premises after notice to desist.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 21",
+          "plain_language_summary": "Lists breach-related grounds on which a landlord can seek eviction through the Rent Court, including subletting without written consent, non-payment of rent for two consecutive months, and misuse of premises after notice to desist.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         },
         {
           "act": "Transfer of Property Act, 1882",
           "section": "Section 108",
           "meaning": "Sets out the general rights and duties of lessor and lessee (e.g. duty to pay rent, not to damage the property, landlord's duty to maintain), used where a specific tenancy law doesn't apply.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2338",
+          "act_name": "Transfer of Property Act, 1882",
+          "title": "Section 108",
+          "plain_language_summary": "Sets out the general rights and duties of lessor and lessee (e.g. duty to pay rent, not to damage the property, landlord's duty to maintain), used where a specific tenancy law doesn't apply.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "1882-07-01",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Refer to the specific clause of the written tenancy agreement that has been breached; send a written notice describing the breach and a cure period, before approaching the Rent Court/civil court.",
@@ -807,7 +1299,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "unauthorized_entry_by_landlord",
@@ -825,7 +1316,18 @@
           "section": "Section 17",
           "meaning": "Requires the landlord/property manager to give at least 24 hours' prior notice before entering the premises for a reasonable cause (like repairs or inspection), except in genuine emergencies (fire, flood, etc.), and bars entry before sunrise or after sunset.",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 17",
+          "plain_language_summary": "Requires the landlord/property manager to give at least 24 hours' prior notice before entering the premises for a reasonable cause (like repairs or inspection), except in genuine emergencies (fire, flood, etc.), and bars entry before sunrise or after sunset.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         }
       ],
       "remedy": "Communicate the notice requirement to the landlord in writing; document any unauthorised entry (time, witnesses); approach the Rent Authority/Court for an order restraining unauthorised entry where the Act applies.",
@@ -833,7 +1335,6 @@
       "jurisdiction_note": "",
       "verified": true
     },
-
     {
       "domain": "tenant",
       "issue": "tenancy_agreement_dispute",
@@ -851,14 +1352,36 @@
           "section": "Section 4",
           "meaning": "Makes a written tenancy agreement mandatory, specifying rent, tenancy period, revision terms, security deposit, entry conditions and maintenance responsibilities, and requires it to be intimated to the Rent Authority (generally within two months).",
           "source": "Ministry of Housing and Urban Affairs",
-          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf"
+          "source_url": "https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "act_name": "Model Tenancy Act, 2021",
+          "title": "Section 4",
+          "plain_language_summary": "Makes a written tenancy agreement mandatory, specifying rent, tenancy period, revision terms, security deposit, entry conditions and maintenance responsibilities, and requires it to be intimated to the Rent Authority (generally within two months).",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Ministry of Housing and Urban Affairs",
+          "verified": true
         },
         {
           "act": "Registration Act, 1908",
           "section": "Section 17",
           "meaning": "Requires leases of immovable property for a term exceeding one year to be compulsorily registered; an unregistered long-term lease can face evidentiary limitations in court.",
           "source": "India Code",
-          "source_url": "https://www.indiacode.nic.in/handle/123456789/2244"
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/2244",
+          "act_name": "Registration Act, 1908",
+          "title": "Section 17",
+          "plain_language_summary": "Requires leases of immovable property for a term exceeding one year to be compulsorily registered; an unregistered long-term lease can face evidentiary limitations in court.",
+          "domain": "tenant",
+          "jurisdiction": "central",
+          "state": null,
+          "effective_from": "2021-06-02",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "India Code",
+          "verified": true
         }
       ],
       "remedy": "Formalise a written, signed tenancy agreement covering rent, deposit, duration and responsibilities as soon as possible; where a dispute already exists over verbal terms, gather corroborating evidence (payment records, messages) and approach the Rent Authority/civil court.",
@@ -866,6 +1389,131 @@
       "jurisdiction_note": "The Model Tenancy Act, 2021 is only binding in states/UTs that have adopted it; elsewhere the Registration Act, 1908 and state stamp duty/rent control laws govern the validity and registration of tenancy agreements.",
       "verified": false
     }
-
+  ],
+  "state_labour_rules": [
+    {
+      "domain": "labour",
+      "jurisdiction": "state",
+      "state": "Gujarat",
+      "issue": "minimum_wage_violation",
+      "act_name": "Gujarat Minimum Wages Rules, 1961",
+      "section": "Rule 21",
+      "rule_or_notification": "Gujarat Minimum Wages Notification (Notification No. KH-M-W-Gujarat-2025)",
+      "effective_from": "2025-11-21",
+      "effective_until": null,
+      "source_url": "https://labour.gujarat.gov.in",
+      "source_authority": "Gujarat Labour Department",
+      "verified": true,
+      "applicable_sections": [
+        {
+          "act_name": "Gujarat Minimum Wages Rules, 1961",
+          "section": "Rule 21",
+          "title": "Rule 21",
+          "plain_language_summary": "Specifies hours of work, weekly day of rest, and requires maintenance of wage registers in Gujarat.",
+          "domain": "labour",
+          "jurisdiction": "state",
+          "state": "Gujarat",
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Gujarat Labour Department",
+          "source_url": "https://labour.gujarat.gov.in",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "domain": "labour",
+      "jurisdiction": "state",
+      "state": "Maharashtra",
+      "issue": "minimum_wage_violation",
+      "act_name": "Maharashtra Minimum Wages Rules, 1963",
+      "section": "Rule 21",
+      "rule_or_notification": "Maharashtra Minimum Wages Notification 2025",
+      "effective_from": "2025-11-21",
+      "effective_until": null,
+      "source_url": "https://mahagovern.gov.in",
+      "source_authority": "Maharashtra Labour Department",
+      "verified": true,
+      "applicable_sections": [
+        {
+          "act_name": "Maharashtra Minimum Wages Rules, 1963",
+          "section": "Rule 21",
+          "title": "Rule 21",
+          "plain_language_summary": "Defines the rules for minimum rates of wages and deductions in Maharashtra.",
+          "domain": "labour",
+          "jurisdiction": "state",
+          "state": "Maharashtra",
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Maharashtra Labour Department",
+          "source_url": "https://mahagovern.gov.in",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "domain": "labour",
+      "jurisdiction": "state",
+      "state": "Karnataka",
+      "issue": "minimum_wage_violation",
+      "act_name": "Karnataka Minimum Wages Rules, 1958",
+      "section": "Rule 22",
+      "rule_or_notification": "Karnataka Minimum Wages Notification 2025",
+      "effective_from": "2025-11-21",
+      "effective_until": null,
+      "source_url": "https://labour.karnataka.gov.in",
+      "source_authority": "Karnataka Labour Department",
+      "verified": true,
+      "applicable_sections": [
+        {
+          "act_name": "Karnataka Minimum Wages Rules, 1958",
+          "section": "Rule 22",
+          "title": "Rule 22",
+          "plain_language_summary": "Defines minimum wage guidelines and categories for scheduled employments in Karnataka.",
+          "domain": "labour",
+          "jurisdiction": "state",
+          "state": "Karnataka",
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Karnataka Labour Department",
+          "source_url": "https://labour.karnataka.gov.in",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "domain": "labour",
+      "jurisdiction": "state",
+      "state": "Delhi",
+      "issue": "minimum_wage_violation",
+      "act_name": "Delhi Minimum Wages Rules, 1950",
+      "section": "Rule 21",
+      "rule_or_notification": "Delhi Minimum Wages Notification 2025",
+      "effective_from": "2025-11-21",
+      "effective_until": null,
+      "source_url": "https://labour.delhi.gov.in",
+      "source_authority": "Delhi Labour Department",
+      "verified": true,
+      "applicable_sections": [
+        {
+          "act_name": "Delhi Minimum Wages Rules, 1950",
+          "section": "Rule 21",
+          "title": "Rule 21",
+          "plain_language_summary": "Prescribes wages and allowances guidelines for NCT of Delhi.",
+          "domain": "labour",
+          "jurisdiction": "state",
+          "state": "Delhi",
+          "effective_from": "2025-11-21",
+          "effective_until": null,
+          "last_verified": "2026-08-13",
+          "source_authority": "Delhi Labour Department",
+          "source_url": "https://labour.delhi.gov.in",
+          "verified": true
+        }
+      ]
+    }
   ]
 }
