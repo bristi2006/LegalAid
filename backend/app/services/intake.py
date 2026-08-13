@@ -13,8 +13,11 @@ The engine uses a "minimum necessary questions" design:
 """
 from __future__ import annotations
 
+import logging
 from typing import Any, Dict, List, Optional, Tuple
 from backend.app.models.schemas import IntakeResult
+
+logger = logging.getLogger("legalaid.intake")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -115,45 +118,58 @@ def check_missing_facts(
     Returns:
         IntakeResult with missing_facts and clarifying_questions
     """
-    # Collect all applicable requirements
-    requirements: List[Tuple[str, str, bool, List[str]]] = []
-    requirements += _REQUIREMENTS.get(domain, [])
-    if issue:
-        requirements += _REQUIREMENTS.get(f"{domain}_{issue}", [])
-        requirements += _REQUIREMENTS.get(issue, [])
+    try:
+        # Coerce extracted_details to safe dict
+        details = extracted_details if isinstance(extracted_details, dict) else {}
 
-    # Deduplicate by fact_key
-    seen_keys: set = set()
-    unique_requirements = []
-    for req in requirements:
-        if req[0] not in seen_keys:
-            seen_keys.add(req[0])
-            unique_requirements.append(req)
+        # Collect all applicable requirements
+        requirements: List[Tuple[str, str, bool, List[str]]] = []
+        requirements += _REQUIREMENTS.get(domain, [])
+        if issue:
+            requirements += _REQUIREMENTS.get(f"{domain}_{issue}", [])
+            requirements += _REQUIREMENTS.get(issue, [])
 
-    missing_facts: List[str] = []
-    clarifying_questions: List[str] = []
-    known_facts: Dict[str, Any] = {}
+        # Deduplicate by fact_key
+        seen_keys: set = set()
+        unique_requirements = []
+        for req in requirements:
+            if req[0] not in seen_keys:
+                seen_keys.add(req[0])
+                unique_requirements.append(req)
 
-    for fact_key, question, is_mandatory, infer_from in unique_requirements:
-        # Check if the fact can be inferred from the extracted details
-        value = None
-        for field_path in infer_from:
-            value = _get_known_value(extracted_details, field_path)
+        missing_facts: List[str] = []
+        clarifying_questions: List[str] = []
+        known_facts: Dict[str, Any] = {}
+
+        for fact_key, question, is_mandatory, infer_from in unique_requirements:
+            # Check if the fact can be inferred from the extracted details
+            value = None
+            for field_path in infer_from:
+                value = _get_known_value(details, field_path)
+                if value:
+                    break
+
             if value:
-                break
+                known_facts[fact_key] = value
+            elif is_mandatory:
+                missing_facts.append(fact_key)
+                clarifying_questions.append(question)
+            # Optional facts with no value: skip silently
 
-        if value:
-            known_facts[fact_key] = value
-        elif is_mandatory:
-            missing_facts.append(fact_key)
-            clarifying_questions.append(question)
-        # Optional facts with no value: skip silently
+        is_ready = len(missing_facts) == 0
 
-    is_ready = len(missing_facts) == 0
+        return IntakeResult(
+            known_facts=known_facts,
+            missing_facts=missing_facts,
+            clarifying_questions=clarifying_questions,
+            is_ready_for_analysis=is_ready,
+        )
+    except Exception as e:
+        logger.error("Unexpected error in check_missing_facts: %s", e)
 
     return IntakeResult(
-        known_facts=known_facts,
-        missing_facts=missing_facts,
-        clarifying_questions=clarifying_questions,
-        is_ready_for_analysis=is_ready,
+        known_facts={},
+        missing_facts=[],
+        clarifying_questions=[],
+        is_ready_for_analysis=False,
     )

@@ -73,63 +73,70 @@ def generate_pdf(text_content: str) -> bytes:
     Returns:
         PDF file as bytes.
     """
-    buffer = io.BytesIO()
-
-    doc = SimpleDocTemplate(
-        buffer,
-        pagesize=letter,
-        leftMargin=0.75 * inch,
-        rightMargin=0.75 * inch,
-        topMargin=0.75 * inch,
-        bottomMargin=0.75 * inch,
-    )
-
-    styles = getSampleStyleSheet()
-
-    # Main body paragraph style — Unicode-safe
-    body_style = ParagraphStyle(
-        "LegalNoticeBody",
-        parent=styles["Normal"],
-        fontName=_ACTIVE_FONT,
-        fontSize=10,
-        leading=15,
-        spaceAfter=0,
-    )
-
-    # Separator line style (for ━━━ dividers)
-    separator_style = ParagraphStyle(
-        "Separator",
-        parent=styles["Normal"],
-        fontName=_ACTIVE_FONT,
-        fontSize=8,
-        leading=10,
-        textColor="grey",
-    )
-
-    story = []
-    lines = text_content.split("\n")
-
-    for line in lines:
-        raw = line.rstrip()
-
-        if not raw:
-            # Blank line → small vertical space
-            story.append(Spacer(1, 4))
-            continue
-
-        # Escape HTML special chars so ReportLab doesn't misinterpret them
-        escaped = html.escape(raw)
-
-        if set(raw.strip()) <= {"━", "=", "-", "_", "─"}:
-            # Decorative separator line
-            story.append(Paragraph(escaped, separator_style))
-        else:
-            story.append(Paragraph(escaped, body_style))
+    if not isinstance(text_content, str) or not text_content.strip():
+        logger.error("Invalid text_content passed to generate_pdf: %r", text_content)
+        raise ValueError("text_content must be a non-empty string.")
 
     try:
+        buffer = io.BytesIO()
+
+        doc = SimpleDocTemplate(
+            buffer,
+            pagesize=letter,
+            leftMargin=0.75 * inch,
+            rightMargin=0.75 * inch,
+            topMargin=0.75 * inch,
+            bottomMargin=0.75 * inch,
+        )
+
+        styles = getSampleStyleSheet()
+
+        # Main body paragraph style — Unicode-safe
+        body_style = ParagraphStyle(
+            "LegalNoticeBody",
+            parent=styles["Normal"],
+            fontName=_ACTIVE_FONT,
+            fontSize=10,
+            leading=15,
+            spaceAfter=0,
+        )
+
+        # Separator line style (for ━━━ dividers)
+        separator_style = ParagraphStyle(
+            "Separator",
+            parent=styles["Normal"],
+            fontName=_ACTIVE_FONT,
+            fontSize=8,
+            leading=10,
+            textColor="grey",
+        )
+
+        story = []
+        lines = text_content.split("\n")
+
+        for line in lines:
+            raw = line.rstrip()
+
+            if not raw:
+                # Blank line → small vertical space
+                story.append(Spacer(1, 4))
+                continue
+
+            # Escape HTML special chars so ReportLab doesn't misinterpret them
+            escaped = html.escape(raw)
+
+            if set(raw.strip()) <= {"━", "=", "-", "_", "─"}:
+                # Decorative separator line
+                story.append(Paragraph(escaped, separator_style))
+            else:
+                story.append(Paragraph(escaped, body_style))
+
         doc.build(story)
+        pdf_bytes = buffer.getvalue()
+        buffer.close()
+        return pdf_bytes
     except Exception as e:
-        logger.error("PDF build failed: %s", e)
+        logger.error("PDF generation failed: %s", e)
         raise RuntimeError(f"PDF generation failed: {e}") from e
 
     pdf_bytes = buffer.getvalue()

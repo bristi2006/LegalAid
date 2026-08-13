@@ -48,20 +48,26 @@ def sanitize_input(text: str, max_chars: int = 5_000) -> tuple[str, Optional[str
         (cleaned_text, error_message | None)
         If error_message is not None the input should be rejected.
     """
-    if not text or not text.strip():
-        return "", "Input cannot be empty."
+    try:
+        if not isinstance(text, str):
+            return "", "Invalid input type. Expected a string."
+        if not text or not text.strip():
+            return "", "Input cannot be empty."
 
-    # Strip null bytes and non-printable control chars (keep newlines/tabs)
-    cleaned = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", text)
-    cleaned = cleaned.strip()
+        # Strip null bytes and non-printable control chars (keep newlines/tabs)
+        cleaned = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", text)
+        cleaned = cleaned.strip()
 
-    if len(cleaned) > max_chars:
-        return "", (
-            f"Input exceeds the maximum allowed length of {max_chars} characters. "
-            "Please shorten your description."
-        )
+        if len(cleaned) > max_chars:
+            return "", (
+                f"Input exceeds the maximum allowed length of {max_chars} characters. "
+                "Please shorten your description."
+            )
 
-    return cleaned, None
+        return cleaned, None
+    except Exception as e:
+        logger.error("Error sanitizing input: %s", e)
+        return "", f"Error processing input: {e}"
 
 
 def detect_prompt_injection(text: str) -> bool:
@@ -70,7 +76,13 @@ def detect_prompt_injection(text: str) -> bool:
     The caller should warn the user but still attempt classification
     (the LLM itself is instructed to treat all input as untrusted data).
     """
-    return bool(_INJECTION_RE.search(text))
+    try:
+        if not isinstance(text, str):
+            return False
+        return bool(_INJECTION_RE.search(text))
+    except Exception as e:
+        logger.error("Error detecting prompt injection: %s", e)
+        return False
 
 
 def mask_pii_for_logging(text: str) -> str:
@@ -78,10 +90,16 @@ def mask_pii_for_logging(text: str) -> str:
     Replace PII (phones, emails, Aadhaar numbers) in strings before they are logged.
     Call this whenever writing user-provided text to log files.
     """
-    text = _PHONE_RE.sub("[PHONE]", text)
-    text = _EMAIL_RE.sub("[EMAIL]", text)
-    text = _AADHAAR_RE.sub("[AADHAAR]", text)
-    return text
+    try:
+        if not isinstance(text, str):
+            return str(text)
+        text = _PHONE_RE.sub("[PHONE]", text)
+        text = _EMAIL_RE.sub("[EMAIL]", text)
+        text = _AADHAAR_RE.sub("[AADHAAR]", text)
+        return text
+    except Exception as e:
+        logger.error("Error masking PII for logging: %s", e)
+        return str(text)
 
 
 def safe_log(message: str) -> str:

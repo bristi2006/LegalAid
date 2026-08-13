@@ -6,9 +6,12 @@ Maps the user's state/city and issue to the applicable central and state legal f
 """
 from __future__ import annotations
 
+import logging
 from typing import Optional
 from backend.app.models.schemas import JurisdictionResult
 from backend.app.services.kb_lookup import lookup_state_labour_rule
+
+logger = logging.getLogger("legalaid.jurisdiction")
 
 # ── State → Applicable tenant law mapping ──────────────────────────────────────
 _TENANT_STATE_LAW = {
@@ -72,102 +75,113 @@ def resolve_jurisdiction(
 
     Supports state-specific labour notifications and state tenancy acts.
     """
-    if not state:
-        return JurisdictionResult(
-            state=None,
-            city=city,
-            applicable_law=None,
-            jurisdiction_note=(
-                f"State/jurisdiction not specified. Legal rules vary significantly by state. "
-                f"For {'tenant' if domain == 'tenant' else 'labour'} disputes especially, please indicate your "
-                f"state to receive accurate legal information."
-            ),
-            status="needs_verification",
-        )
-
-    state_lower = state.lower().strip()
-
-    # ── Consumer ──────────────────────────────────────────────────────────────
-    if domain == "consumer":
-        return JurisdictionResult(
-            state=state,
-            city=city,
-            applicable_law="Consumer Protection Act, 2019",
-            jurisdiction_note=(
-                "Consumer Protection Act, 2019 is a central act and applies uniformly "
-                f"across India, including {state}. District Consumer Commission for "
-                f"{city or state} has jurisdiction for claims up to ₹50 lakh."
-            ),
-            status="resolved",
-        )
-
-    # ── Labour ────────────────────────────────────────────────────────────────
-    if domain == "labour":
-        # Check if we have state-specific rule in the KB (e.g. for minimum wage)
-        state_rule = lookup_state_labour_rule(state, issue or "minimum_wage_violation")
-        if state_rule:
+    try:
+        if not state:
             return JurisdictionResult(
-                state=state,
+                state=None,
                 city=city,
-                applicable_law=f"Code on Wages, 2019 / {state_rule.get('act_name')}",
+                applicable_law=None,
                 jurisdiction_note=(
-                    f"Gujarat/State framework: {state_rule.get('rule_or_notification')}. "
-                    f"Minimum wage rates are notified by {state} and enforced under local rules. "
-                    f"The Labour Commissioner's office in {city or state} has jurisdiction."
+                    f"State/jurisdiction not specified. Legal rules vary significantly by state. "
+                    f"For {'tenant' if domain == 'tenant' else 'labour'} disputes especially, please indicate your "
+                    f"state to receive accurate legal information."
                 ),
-                status="resolved",
-            )
-        else:
-            # If the issue specifically requires state rules (like minimum wages) but not verified
-            if issue == "minimum_wage_violation":
-                return JurisdictionResult(
-                    state=state,
-                    city=city,
-                    applicable_law="Code on Wages, 2019 / State Minimum Wages Notification (unverified)",
-                    jurisdiction_note=(
-                        f"Minimum wage rules are state-regulated. The notifications for state '{state}' "
-                        f"could not be verified in the local KB. Consult local Labour Commissioner's office."
-                    ),
-                    status="needs_verification",
-                )
-            # Default central act fallback
-            return JurisdictionResult(
-                state=state,
-                city=city,
-                applicable_law="Code on Wages, 2019 (Central Act)",
-                jurisdiction_note=(
-                    f"The Code on Wages, 2019 is a central act. Minimum wage rates are notified separately by "
-                    f"{state} and must be checked against the current State notification. "
-                    f"The Labour Commissioner's office in {city or state} handles wage claims."
-                ),
-                status="resolved",
-            )
-
-    # ── Tenant ────────────────────────────────────────────────────────────────
-    if domain == "tenant":
-        if state_lower in _TENANT_STATE_LAW:
-            law_name, law_note = _TENANT_STATE_LAW[state_lower]
-            return JurisdictionResult(
-                state=state,
-                city=city,
-                applicable_law=law_name,
-                jurisdiction_note=law_note,
-                status="resolved",
-            )
-        else:
-            return JurisdictionResult(
-                state=state,
-                city=city,
-                applicable_law="Transfer of Property Act, 1882 (Section 108) / Model Tenancy Act, 2021 (if adopted)",
-                jurisdiction_note=_TPA_FALLBACK_NOTE,
                 status="needs_verification",
             )
 
-    # Unknown domain
+        state_lower = state.lower().strip()
+
+        # ── Consumer ──────────────────────────────────────────────────────────────
+        if domain == "consumer":
+            return JurisdictionResult(
+                state=state,
+                city=city,
+                applicable_law="Consumer Protection Act, 2019",
+                jurisdiction_note=(
+                    "Consumer Protection Act, 2019 is a central act and applies uniformly "
+                    f"across India, including {state}. District Consumer Commission for "
+                    f"{city or state} has jurisdiction for claims up to ₹50 lakh."
+                ),
+                status="resolved",
+            )
+
+        # ── Labour ────────────────────────────────────────────────────────────────
+        if domain == "labour":
+            # Check if we have state-specific rule in the KB (e.g. for minimum wage)
+            state_rule = lookup_state_labour_rule(state, issue or "minimum_wage_violation")
+            if state_rule:
+                return JurisdictionResult(
+                    state=state,
+                    city=city,
+                    applicable_law=f"Code on Wages, 2019 / {state_rule.get('act_name')}",
+                    jurisdiction_note=(
+                        f"Gujarat/State framework: {state_rule.get('rule_or_notification')}. "
+                        f"Minimum wage rates are notified by {state} and enforced under local rules. "
+                        f"The Labour Commissioner's office in {city or state} has jurisdiction."
+                    ),
+                    status="resolved",
+                )
+            else:
+                # If the issue specifically requires state rules (like minimum wages) but not verified
+                if issue == "minimum_wage_violation":
+                    return JurisdictionResult(
+                        state=state,
+                        city=city,
+                        applicable_law="Code on Wages, 2019 / State Minimum Wages Notification (unverified)",
+                        jurisdiction_note=(
+                            f"Minimum wage rules are state-regulated. The notifications for state '{state}' "
+                            f"could not be verified in the local KB. Consult local Labour Commissioner's office."
+                        ),
+                        status="needs_verification",
+                    )
+                # Default central act fallback
+                return JurisdictionResult(
+                    state=state,
+                    city=city,
+                    applicable_law="Code on Wages, 2019 (Central Act)",
+                    jurisdiction_note=(
+                        f"The Code on Wages, 2019 is a central act. Minimum wage rates are notified separately by "
+                        f"{state} and must be checked against the current State notification. "
+                        f"The Labour Commissioner's office in {city or state} handles wage claims."
+                    ),
+                    status="resolved",
+                )
+
+        # ── Tenant ────────────────────────────────────────────────────────────────
+        if domain == "tenant":
+            if state_lower in _TENANT_STATE_LAW:
+                law_name, law_note = _TENANT_STATE_LAW[state_lower]
+                return JurisdictionResult(
+                    state=state,
+                    city=city,
+                    applicable_law=law_name,
+                    jurisdiction_note=law_note,
+                    status="resolved",
+                )
+            else:
+                return JurisdictionResult(
+                    state=state,
+                    city=city,
+                    applicable_law="Transfer of Property Act, 1882 (Section 108) / Model Tenancy Act, 2021 (if adopted)",
+                    jurisdiction_note=_TPA_FALLBACK_NOTE,
+                    status="needs_verification",
+                )
+
+        # Unknown domain
+        return JurisdictionResult(
+            state=state,
+            city=city,
+            applicable_law=None,
+            jurisdiction_note="Jurisdiction cannot be resolved for unsupported domains.",
+            status="not_applicable",
+        )
+    except Exception as e:
+        logger.error("Unexpected error in resolve_jurisdiction: %s", e)
+
     return JurisdictionResult(
         state=state,
         city=city,
         applicable_law=None,
-        jurisdiction_note="Jurisdiction cannot be resolved for unsupported domains.",
-        status="not_applicable",
+        jurisdiction_note="Error resolving jurisdiction: unexpected internal failure.",
+        status="needs_verification",
     )

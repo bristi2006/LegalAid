@@ -85,6 +85,9 @@ def _collect_helplines(text_lower: str) -> List[str]:
     return result
 
 
+import logging
+logger = logging.getLogger("legalaid.safety")
+
 def assess_safety(user_input: str) -> SafetyAssessment:
     """
     Analyse user input for high-risk or emergency indicators.
@@ -94,36 +97,46 @@ def assess_safety(user_input: str) -> SafetyAssessment:
       - Set professional_review_recommended = True
       - Surface helplines in the API response
     """
-    text_lower = user_input.lower()
-
-    # Check critical patterns first
-    for pattern in _COMPILED_CRITICAL:
-        if pattern.search(user_input):
+    try:
+        if not isinstance(user_input, str):
             return SafetyAssessment(
-                is_high_risk=True,
-                risk_level="critical",
-                safety_alert=(
-                    "⚠️ Your situation may involve immediate danger, violence, or a serious criminal matter. "
-                    "Please seek immediate help. The following helplines are available for you:"
-                ),
-                helplines=_collect_helplines(text_lower),
-                professional_review_recommended=True,
+                is_high_risk=False,
+                risk_level="low",
+                professional_review_recommended=False,
             )
 
-    # Check high-risk patterns
-    for pattern in _COMPILED_HIGH:
-        if pattern.search(user_input):
-            return SafetyAssessment(
-                is_high_risk=True,
-                risk_level="high",
-                safety_alert=(
-                    "⚠️ This appears to be a high-risk legal situation. "
-                    "We strongly recommend consulting a qualified lawyer immediately. "
-                    "The following resources may help:"
-                ),
-                helplines=_collect_helplines(text_lower),
-                professional_review_recommended=True,
-            )
+        text_lower = user_input.lower()
+
+        # Check critical patterns first
+        for pattern in _COMPILED_CRITICAL:
+            if pattern.search(user_input):
+                return SafetyAssessment(
+                    is_high_risk=True,
+                    risk_level="critical",
+                    safety_alert=(
+                        "⚠️ Your situation may involve immediate danger, violence, or a serious criminal matter. "
+                        "Please seek immediate help. The following helplines are available for you:"
+                    ),
+                    helplines=_collect_helplines(text_lower),
+                    professional_review_recommended=True,
+                )
+
+        # Check high-risk patterns
+        for pattern in _COMPILED_HIGH:
+            if pattern.search(user_input):
+                return SafetyAssessment(
+                    is_high_risk=True,
+                    risk_level="high",
+                    safety_alert=(
+                        "⚠️ This appears to be a high-risk legal situation. "
+                        "We strongly recommend consulting a qualified lawyer immediately. "
+                        "The following resources may help:"
+                    ),
+                    helplines=_collect_helplines(text_lower),
+                    professional_review_recommended=True,
+                )
+    except Exception as e:
+        logger.error("Unexpected error in assess_safety: %s", e)
 
     return SafetyAssessment(
         is_high_risk=False,
