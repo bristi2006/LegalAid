@@ -3,6 +3,7 @@ import { Scale, Award, Shield, Briefcase, Play, Pause, RefreshCw, Database, GitM
 import { BackgroundPaths } from "./BackgroundPaths";
 import { motion } from "framer-motion";
 import { WisprFlow } from "./WisprFlow";
+import { BackgroundBeamsWithCollision } from "./BackgroundBeamsWithCollision";
 
 interface HomeProps {
   onStart: () => void;
@@ -662,9 +663,9 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
         </div>
       </div>
 
-      {/* Light-mode Premium Footer replacing the yellow disclaimer box */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-16 px-6 text-left">
-        <div className="max-w-6xl mx-auto space-y-12">
+      {/* Light-mode Premium Footer with Beams Collision rain effect */}
+      <BackgroundBeamsWithCollision className="border-t border-slate-200 py-16 px-6 text-left bg-slate-50">
+        <footer className="w-full max-w-6xl mx-auto space-y-12 relative z-10">
           
           {/* Big Headline */}
           <div className="border-b border-slate-200 pb-8 text-center sm:text-left">
@@ -765,8 +766,8 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
             </p>
           </div>
 
-        </div>
-      </footer>
+        </footer>
+      </BackgroundBeamsWithCollision>
 
     </div>
   );
