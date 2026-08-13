@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Scale, Award, HelpCircle, Shield, Briefcase, ChevronDown, ChevronUp, Play, Pause, RefreshCw, Database, GitMerge, FileCheck } from "lucide-react";
+import { Scale, Award, Shield, Briefcase, Play, Pause, RefreshCw, Database, GitMerge, FileCheck } from "lucide-react";
 import { BackgroundPaths } from "./BackgroundPaths";
 import { motion } from "framer-motion";
+import { WisprFlow } from "./WisprFlow";
 
 interface HomeProps {
   onStart: () => void;
@@ -588,62 +589,184 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
         </div>
       </div>
 
-      {/* Section C: FAQ Accordion Section */}
-      <div className="bg-slate-50 py-16 border-b border-slate-200">
-        <div className="max-w-3xl mx-auto px-6 space-y-8">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center gap-2">
-              <HelpCircle className="w-8 h-8 text-indigo-600" />
-              Frequently Asked Questions
+      {/* Section C: FAQ Accordion Section with WisprFlow rotating behind */}
+      <div className="relative bg-slate-50 py-16 border-b border-slate-200 overflow-hidden">
+        {/* Animated text flow background */}
+        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none flex items-center justify-center">
+          <WisprFlow />
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            
+            {/* Left Column */}
+            <div className="md:col-span-5 space-y-6 text-left">
+              <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Your questions,<br />answered.
+              </h2>
+              <p className="text-slate-500 text-sm">
+                Didn't find the answer to your question?
+              </p>
+              <button
+                onClick={onStart}
+                className="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 hover:scale-105 active:scale-95 text-white font-extrabold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md cursor-pointer"
+              >
+                Ask us anything
+              </button>
+            </div>
+
+            {/* Right Column */}
+            <div className="md:col-span-7 space-y-4 text-left">
+              {[
+                {
+                  q: "What is LegalAid AI, and how can it help me?",
+                  a: "LegalAid is an automated legal rights assistant. It analyzes your grievance description, maps it to applicable Indian statutory codes, highlights your legal protections, and drafts a professional demand notice PDF."
+                },
+                {
+                  q: "What laws and statutory rights are supported?",
+                  a: "We support Consumer disputes (Consumer Protection Act 2019), Employee claims (Code on Wages 2019), and Landlord-Tenant issues (Model Tenancy Act). Every reference is verified against local bare-acts."
+                },
+                {
+                  q: "Is the generated notice legally binding?",
+                  a: "The document generated is a formal Demand Notice template. While it formats your facts and retrieved citations professionally, we strongly advise consulting an advocate before formal dispatch."
+                },
+                {
+                  q: "How does bilingual and Hinglish translation work?",
+                  a: "You can submit case queries in English, Hindi, or Hinglish. If Hindi is selected, our system compiles the notice into professional Hindi while preserving standard Act titles in English to retain legal validity."
+                }
+              ].map((f, idx) => (
+                <div key={idx} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:bg-slate-50 transition-colors text-sm cursor-pointer gap-4"
+                  >
+                    <span>{f.q}</span>
+                    <div className="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center shrink-0">
+                      {openFaq === idx ? (
+                        <span className="text-slate-500 text-xs font-bold leading-none">-</span>
+                      ) : (
+                        <span className="text-slate-500 text-xs font-bold leading-none">+</span>
+                      )}
+                    </div>
+                  </button>
+                  {openFaq === idx && (
+                    <div className="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                      {f.a}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Light-mode Premium Footer replacing the yellow disclaimer box */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-16 px-6 text-left">
+        <div className="max-w-6xl mx-auto space-y-12">
+          
+          {/* Big Headline */}
+          <div className="border-b border-slate-200 pb-8 text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              Know Your Rights. <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Assert Your Claims.</span>
             </h2>
-            <p className="text-slate-500 text-sm">
-              Common questions about LegalAid's scope and legal validity.
+          </div>
+
+          {/* 5-Column Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 text-xs font-semibold text-slate-505">
+            
+            {/* Column 1: Logo & Description */}
+            <div className="space-y-4 md:col-span-1">
+              <div className="flex items-center gap-2">
+                <Scale className="w-5 h-5 text-indigo-600" />
+                <span className="font-extrabold text-base text-slate-800 tracking-tight">LegalAId</span>
+              </div>
+              <p className="text-[11px] leading-relaxed text-slate-500 font-medium">
+                AI-powered statutory analysis assistant for first-generation litigants in India. Simplify parameter extraction, verify provisions, and compile notice drafts instantly.
+              </p>
+            </div>
+
+            {/* Column 2: Product */}
+            <div className="space-y-3">
+              <h4 className="text-slate-800 text-xs font-bold uppercase tracking-wider">Product</h4>
+              <ul className="space-y-2 font-medium">
+                <li><button onClick={onStart} className="hover:text-indigo-600 transition-colors text-left cursor-pointer">Grievance Intake</button></li>
+                <li><span className="text-slate-400">Statute Mapping</span></li>
+                <li><span className="text-slate-400">Chronology Audit</span></li>
+                <li><span className="text-slate-400">Notice Editor</span></li>
+                <li><span className="text-slate-400">PDF Compiler</span></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Resources */}
+            <div className="space-y-3">
+              <h4 className="text-slate-800 text-xs font-bold uppercase tracking-wider">Resources</h4>
+              <ul className="space-y-2 font-medium">
+                <li><a href="https://www.indiacode.nic.in" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">India Code Bare-Acts</a></li>
+                <li><a href="https://edaakhil.nic.in" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">e-Daakhil Portal</a></li>
+                <li><span className="text-slate-400">CPA 2019 Rules</span></li>
+                <li><span className="text-slate-400">Wage Code 2019</span></li>
+                <li><span className="text-slate-400">Model Tenancy Act</span></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Legal Info */}
+            <div className="space-y-3">
+              <h4 className="text-slate-800 text-xs font-bold uppercase tracking-wider">Legal Info</h4>
+              <ul className="space-y-2 font-medium">
+                <li><span className="text-slate-400">Terms of Service</span></li>
+                <li><span className="text-slate-400">Privacy Policy</span></li>
+                <li><span className="text-slate-400">Cookie Policy</span></li>
+                <li><span className="text-slate-400">Legal Advocate Directory</span></li>
+              </ul>
+            </div>
+
+            {/* Column 5: Social Connections */}
+            <div className="space-y-3">
+              <h4 className="text-slate-800 text-xs font-bold uppercase tracking-wider">Social Connection</h4>
+              <ul className="space-y-2.5 font-medium">
+                <li>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                    <svg className="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                    <svg className="w-4 h-4 shrink-0 text-indigo-650" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                    <svg className="w-4 h-4 shrink-0 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
+                    Twitter
+                  </a>
+                </li>
+                <li>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                    <svg className="w-4 h-4 shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" /><polygon points="10 15 15 12 10 9" /></svg>
+                    YouTube
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Bottom Row: Small print disclaimer and copyright */}
+          <div className="border-t border-slate-200 pt-8 space-y-4">
+            <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
+              <span className="font-bold text-slate-500">MANDATORY GENERAL LEGAL DISCLAIMER:</span> LegalAid is an automated information assistant designed for informational and educational use only. It does not constitute formal legal advice, represent you, or act as an advocate/advocate service. Always consult a certified lawyer or bar council advocate before initiating formal legal actions or serving notices in court.
+            </p>
+            <p className="text-[10px] text-slate-400 text-center sm:text-left">
+              © 2026 LegalAId Project. All rights reserved. Strictly subject to statutory verification under the India Code.
             </p>
           </div>
 
-          <div className="space-y-4 pt-2">
-            {[
-              {
-                q: "Is the generated notice legally binding?",
-                a: "The notice generated is a formal Demand Letter / Legal Notice draft. While it formats the facts and applicable laws professionally, it should be reviewed by an advocate before signing and official dispatch to ensure maximum legal validity."
-              },
-              {
-                q: "What states and jurisdictions are supported?",
-                a: "LegalAid supports all states in India. For issues where state-specific laws differ (like Shops & Establishments rules or local rent controls), the intake wizard prompts you for your location and incorporates local rules."
-              },
-              {
-                q: "How does bilingual/Hinglish translation work?",
-                a: "You can explain your problem in Hindi, Hinglish, or English. The backend AI analyzes the text, identifies the legal criteria, and renders the notice. If you select Hindi, the draft notice is translated to professional Hindi, keeping core act titles and sections in English to maintain legal validity."
-              }
-            ].map((f, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full flex items-center justify-between p-5 text-left font-bold text-slate-800 hover:bg-slate-50 transition-colors text-sm cursor-pointer"
-                >
-                  <span>{f.q}</span>
-                  {openFaq === idx ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                    {f.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
-
-      {/* Safety Notice Footer Card */}
-      <div className="bg-white py-10 text-center">
-        <div className="max-w-xl mx-auto px-4 space-y-4">
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-[10px] text-amber-800 leading-relaxed text-left">
-            <span className="font-bold">GENERAL LEGAL DISCLAIMER:</span> LegalAid is an automated information assistant. It does not provide legal advice, represent you, or constitute a certified advocate service. Always consult a lawyer before taking formal legal actions in court.
-          </div>
-          <p className="text-[10px] text-slate-400">© 2026 LegalAId Project. All rights reserved.</p>
-        </div>
-      </div>
+      </footer>
 
     </div>
   );
