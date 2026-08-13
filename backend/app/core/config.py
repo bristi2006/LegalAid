@@ -17,6 +17,10 @@ class Settings:
     GEMINI_API_KEY: str = os.environ.get("GEMINI_API_KEY", "")
     GEMINI_MODEL: str = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
+    # ── Groq Vision ───────────────────────────────────────────────────────
+    GROQ_API_KEY: str = os.environ.get("GROQ_API_KEY", "")
+    GROQ_MODEL: str = os.environ.get("GROQ_MODEL", "llama-3.2-11b-vision-preview")
+
     # ── CORS ──────────────────────────────────────────────────────────────
     # Set FRONTEND_URL in .env to restrict CORS to your real frontend origin.
     # Supports comma-separated values for multiple origins.

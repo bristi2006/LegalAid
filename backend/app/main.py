@@ -44,6 +44,7 @@ from backend.app.services.verify import verify_citations
 from backend.app.services.pdf_gen import generate_pdf
 from backend.app.services.translate import translate_notice_to_hindi
 from backend.app.services.transcribe import transcribe_audio_input
+from backend.app.services.ocr import process_document_ocr
 from backend.app.utils.template_renderer import render_document
 
 # New v2/v3 engines
@@ -855,6 +856,32 @@ async def transcribe_audio(
     except Exception as e:
         logger.error("Transcription endpoint failed: %s", e)
         raise LegalAidException("TRANSCRIPTION_FAILURE", f"Speech-to-text failed: {e}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# POST /ocr-upload  [Groq / Gemini Vision Document OCR]
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.post("/ocr-upload")
+async def ocr_upload_document(
+    file: UploadFile = File(...),
+    language: str = Form("English"),
+):
+    """
+    Accepts an uploaded legal document image (png, jpg, webp) and performs OCR extraction
+    using Groq Vision API (or Gemini fallback).
+    """
+    try:
+        content = await file.read()
+        if not content:
+            raise LegalAidException("INVALID_INPUT", "Uploaded document image file is empty.")
+
+        mime_type = file.content_type or "image/png"
+        ocr_result = await process_document_ocr(content, mime_type=mime_type, language=language)
+        return ocr_result
+    except Exception as e:
+        logger.error("OCR upload endpoint failed: %s", e)
+        raise LegalAidException("OCR_FAILURE", f"Document scanning failed: {e}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
