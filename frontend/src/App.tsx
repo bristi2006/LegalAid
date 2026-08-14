@@ -382,9 +382,69 @@ function App() {
 
         {step === "analyzing" && (
           <div className="max-w-md mx-auto text-center py-20 px-4 space-y-6">
-            <div className="relative w-16 h-16 mx-auto">
-              <div className="absolute inset-0 rounded-full border-4 border-indigo-200 animate-pulse"></div>
-              <div className="absolute inset-0 rounded-full border-4 border-t-indigo-600 animate-spin"></div>
+            {/* Legal radial spinner — scales icon centre + 12 rotating pill dashes */}
+            <div className="relative w-28 h-28 mx-auto">
+              {/* SVG radial dashes */}
+              <svg
+                viewBox="0 0 100 100"
+                className="absolute inset-0 w-full h-full animate-spin"
+                style={{ animationDuration: "1.1s", animationTimingFunction: "linear" }}
+              >
+                {Array.from({ length: 12 }).map((_, i) => {
+                  const angle = (i * 360) / 12;
+                  const opacity = 0.15 + ((i / 12) * 0.85);
+                  const rad = (angle * Math.PI) / 180;
+                  const cx = 50 + 36 * Math.sin(rad);
+                  const cy = 50 - 36 * Math.cos(rad);
+                  return (
+                    <rect
+                      key={i}
+                      x={cx - 4}
+                      y={cy - 9}
+                      width={8}
+                      height={16}
+                      rx={4}
+                      ry={4}
+                      fill={i >= 9 ? "#1e3a6e" : "#6b7db3"}
+                      opacity={opacity}
+                      transform={`rotate(${angle}, ${cx}, ${cy})`}
+                    />
+                  );
+                })}
+              </svg>
+              {/* Scales of justice icon — centred, static */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-10 h-10"
+                  fill="none"
+                  stroke="#1e3a6e"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* Beam */}
+                  <line x1="4" y1="8" x2="20" y2="8" />
+                  {/* Centre post */}
+                  <line x1="12" y1="2" x2="12" y2="8" />
+                  {/* Circle top */}
+                  <circle cx="12" cy="2" r="1" fill="#1e3a6e" stroke="none" />
+                  {/* Left pan chain */}
+                  <line x1="5" y1="8" x2="3" y2="14" />
+                  <line x1="3" y1="8" x2="5" y2="14" />
+                  {/* Left pan */}
+                  <path d="M1 14 Q4 17 7 14" strokeWidth="1.5" fill="none" />
+                  {/* Right pan chain */}
+                  <line x1="19" y1="8" x2="17" y2="14" />
+                  <line x1="21" y1="8" x2="19" y2="14" />
+                  {/* Right pan */}
+                  <path d="M17 14 Q20 17 23 14" strokeWidth="1.5" fill="none" />
+                  {/* Base pole */}
+                  <line x1="12" y1="8" x2="12" y2="21" />
+                  {/* Base */}
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                </svg>
+              </div>
             </div>
             <div className="space-y-2">
               <h2 className="text-xl font-bold text-slate-800">Processing Your Intake</h2>
@@ -392,6 +452,7 @@ function App() {
             </div>
           </div>
         )}
+
 
         {step === "needs_information" && riskLevel === "high" && (
           <SafetyLockdown

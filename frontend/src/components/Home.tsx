@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Scale, Award, Shield, Briefcase, Play, Pause, RefreshCw, Database, GitMerge, FileCheck } from "lucide-react";
+import { Scale, Award, Shield, Briefcase, Play, Pause, RefreshCw, Database, GitMerge, FileCheck, ChevronDown, Menu, X } from "lucide-react";
 import { BackgroundPaths } from "./BackgroundPaths";
 import { motion, type TargetAndTransition } from "framer-motion";
 import { WisprFlow } from "./WisprFlow";
@@ -116,6 +116,335 @@ export const Typewriter: React.FC<{
         }}
       />
     </span>
+  );
+};
+
+
+// ── Navbar ───────────────────────────────────────────────────────────────────
+const NAV_LINKS = [
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Dispute Types", href: "#dispute-types" },
+  { label: "FAQ", href: "#faq" },
+];
+
+const Navbar: React.FC<{ onStart: () => void }> = ({ onStart }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <>
+      <nav
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 999,
+          backgroundColor: "#ffffff",
+          borderBottom: scrolled ? "1px solid #e2e8f0" : "1px solid #e2e8f0",
+          boxShadow: scrolled ? "0 2px 16px 0 rgba(30,41,59,0.07)" : "none",
+          transition: "box-shadow 0.25s ease",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "0 28px",
+            height: 64,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* ── Left nav links ── */}
+          <div style={{ display: "flex", alignItems: "center", gap: 4, flex: 1 }}>
+            {/* Services dropdown */}
+            <div style={{ position: "relative" }}>
+              <button
+                id="nav-services-btn"
+                onClick={() => setServicesOpen((v) => !v)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  padding: "6px 12px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: "transparent",
+                  cursor: "pointer",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  letterSpacing: "-0.01em",
+                  transition: "background 0.15s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                Services
+                <ChevronDown
+                  style={{
+                    width: 14,
+                    height: 14,
+                    transition: "transform 0.2s",
+                    transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                />
+              </button>
+              {servicesOpen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "calc(100% + 8px)",
+                    left: 0,
+                    minWidth: 200,
+                    background: "#ffffff",
+                    borderRadius: 12,
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 8px 32px rgba(30,41,59,0.12)",
+                    padding: "6px 0",
+                    zIndex: 100,
+                  }}
+                >
+                  {[
+                    { icon: "⚖️", label: "Consumer Disputes", desc: "CPA 2019" },
+                    { icon: "💼", label: "Wage & Salary Claims", desc: "Code on Wages 2019" },
+                    { icon: "🏠", label: "Tenant & Rental", desc: "Model Tenancy Act" },
+                  ].map((item) => (
+                    <button
+                      key={item.label}
+                      onClick={() => { setServicesOpen(false); onStart(); }}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "10px 16px",
+                        border: "none",
+                        background: "transparent",
+                        cursor: "pointer",
+                        textAlign: "left",
+                        transition: "background 0.12s",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "#f8fafc")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                    >
+                      <span style={{ fontSize: 18 }}>{item.icon}</span>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: "#0f172a" }}>{item.label}</div>
+                        <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 1 }}>{item.desc}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Static nav links */}
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.label}
+                id={`nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={() => handleNavClick(link.href)}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: "transparent",
+                  cursor: "pointer",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  letterSpacing: "-0.01em",
+                  transition: "background 0.15s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
+          {/* ── Centre brand logo ── */}
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              userSelect: "none",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Georgia', 'Playfair Display', 'Times New Roman', serif",
+                fontSize: 22,
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                color: "#0f172a",
+              }}
+            >
+              LegalAid
+            </span>
+            <span
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                color: "#6366f1",
+                verticalAlign: "super",
+                marginTop: -4,
+                letterSpacing: "0.05em",
+              }}
+            >
+              ®
+            </span>
+          </div>
+
+          {/* ── Right actions ── */}
+          <div style={{ display: "flex", alignItems: "center", gap: 4, flex: 1, justifyContent: "flex-end" }}>
+            <button
+              id="nav-about-btn"
+              onClick={() => handleNavClick("#faq")}
+              style={{
+                padding: "6px 12px",
+                borderRadius: 8,
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                fontSize: 14,
+                fontWeight: 600,
+                color: "#1e293b",
+                letterSpacing: "-0.01em",
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              About
+            </button>
+
+            <button
+              id="nav-get-started-btn"
+              onClick={onStart}
+              style={{
+                padding: "8px 20px",
+                borderRadius: 8,
+                border: "none",
+                background: "#4f46e5",
+                color: "#ffffff",
+                cursor: "pointer",
+                fontSize: 14,
+                fontWeight: 700,
+                letterSpacing: "-0.01em",
+                transition: "background 0.15s, transform 0.1s",
+                boxShadow: "0 2px 8px rgba(79,70,229,0.25)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#4338ca";
+                e.currentTarget.style.transform = "scale(1.03)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#4f46e5";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              Get Started
+            </button>
+
+            {/* Mobile hamburger */}
+            <button
+              id="nav-mobile-menu-btn"
+              onClick={() => setMobileOpen((v) => !v)}
+              style={{
+                display: "none",
+                padding: 6,
+                borderRadius: 8,
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                color: "#1e293b",
+              }}
+              className="navbar-hamburger"
+            >
+              {mobileOpen ? <X style={{ width: 20, height: 20 }} /> : <Menu style={{ width: 20, height: 20 }} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div
+            style={{
+              borderTop: "1px solid #e2e8f0",
+              padding: "12px 28px 20px",
+              background: "#ffffff",
+              display: "flex",
+              flexDirection: "column",
+              gap: 4,
+            }}
+          >
+            {["Services", ...NAV_LINKS.map((l) => l.label), "About"].map((label) => (
+              <button
+                key={label}
+                onClick={() => { setMobileOpen(false); if (label === "About") handleNavClick("#faq"); }}
+                style={{
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "10px 12px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: "transparent",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  cursor: "pointer",
+                }}
+              >
+                {label}
+              </button>
+            ))}
+            <button
+              onClick={() => { setMobileOpen(false); onStart(); }}
+              style={{
+                marginTop: 8,
+                padding: "11px 20px",
+                borderRadius: 8,
+                border: "none",
+                background: "#4f46e5",
+                color: "#ffffff",
+                fontSize: 15,
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              Get Started
+            </button>
+          </div>
+        )}
+      </nav>
+
+      {/* Inline responsive style for hamburger */}
+      <style>{`
+        @media (max-width: 768px) {
+          .navbar-hamburger { display: flex !important; }
+        }
+      `}</style>
+    </>
   );
 };
 
@@ -611,6 +940,9 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Navbar */}
+      <Navbar onStart={onStart} />
+
       {/* 1. Hero fold wrapped in BackgroundPaths (Visible immediately, no scrolling background paths) */}
       <BackgroundPaths>
         <div className="max-w-4xl mx-auto space-y-6 text-center">
@@ -691,18 +1023,20 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
         <div className="max-w-5xl mx-auto px-6 space-y-16">
           
           {/* Section A: How It Works - Replaced the boring cards with the LegalIntelligenceDashboard */}
-          <div className="space-y-4">
+          <div id="how-it-works" className="space-y-4">
             <LegalIntelligenceDashboard />
           </div>
 
           {/* Section B: Supported Disputes Carousel */}
-          <CategoryCarousel onStart={onStart} isHindi={isHindi} />
+          <div id="dispute-types">
+            <CategoryCarousel onStart={onStart} isHindi={isHindi} />
+          </div>
 
         </div>
       </div>
 
       {/* Section C: FAQ Accordion Section with WisprFlow rotating behind */}
-      <div className="relative bg-slate-50 py-16 border-b border-slate-200 overflow-hidden">
+      <div id="faq" className="relative bg-slate-50 py-16 border-b border-slate-200 overflow-hidden">
         {/* Animated text flow background */}
         <div className="absolute inset-0 z-0 opacity-30 pointer-events-none flex items-center justify-center">
           <WisprFlow />
