@@ -118,6 +118,176 @@ export const Typewriter: React.FC<{
   );
 };
 
+
+// ── Category Carousel ────────────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    icon: Shield,
+    title: "Consumer Protection",
+    titleHi: "उपभोक्ता संरक्षण",
+    subtitle: "Consumer Protection Act, 2019",
+    items: [
+      "Defective products or manufacturing faults",
+      "Refusal or delay of eligible product refunds",
+      "Overcharging above MRP or hidden service charges",
+      "Misleading advertising or services deficiencies",
+    ],
+    color: "indigo",
+  },
+  {
+    icon: Briefcase,
+    title: "Employee Rights",
+    titleHi: "कर्मचारी अधिकार",
+    subtitle: "Code on Wages, 2019",
+    items: [
+      "Unpaid salary, final settlements, or holding wages",
+      "Unpaid overtime hours or unlawful salary cuts",
+      "Resignation and notice period disputes",
+      "Recovery of bonus payments",
+    ],
+    color: "violet",
+  },
+  {
+    icon: Scale,
+    title: "Tenant & Rental",
+    titleHi: "किरायेदार अधिकार",
+    subtitle: "Model Tenancy Act",
+    items: [
+      "Landlord refusing to return security deposits",
+      "Notice period and eviction timeline disagreements",
+      "Refusal to perform necessary structural repairs",
+      "Rent hike or lease agreement terms",
+    ],
+    color: "blue",
+  },
+];
+
+const CategoryCarousel: React.FC<{ onStart: () => void; isHindi: boolean }> = ({ isHindi }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = CATEGORIES.length;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % total);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  // positions: left = (activeIndex - 1 + total) % total, center = activeIndex, right = (activeIndex + 1) % total
+  const getPosition = (idx: number): "left" | "center" | "right" | "hidden" => {
+    if (idx === activeIndex) return "center";
+    if (idx === (activeIndex - 1 + total) % total) return "left";
+    if (idx === (activeIndex + 1) % total) return "right";
+    return "hidden";
+  };
+
+  const positionStyles: Record<string, React.CSSProperties> = {
+    center: {
+      transform: "translateX(0%) scale(1.12)",
+      opacity: 1,
+      zIndex: 20,
+      filter: "none",
+    },
+    left: {
+      transform: "translateX(-72%) scale(0.84)",
+      opacity: 0.45,
+      zIndex: 10,
+      filter: "blur(0.5px)",
+    },
+    right: {
+      transform: "translateX(72%) scale(0.84)",
+      opacity: 0.45,
+      zIndex: 10,
+      filter: "blur(0.5px)",
+    },
+    hidden: {
+      transform: "translateX(0%) scale(0.7)",
+      opacity: 0,
+      zIndex: 0,
+    },
+  };
+
+  return (
+    <div className="space-y-8 pt-4">
+      <div className="text-center space-y-2">
+        <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+          {isHindi ? "समर्थित कानूनी श्रेणियां" : "Supported Legal Categories"}
+        </h2>
+        <p className="text-slate-500 text-sm max-w-lg mx-auto">
+          Our platform specializes in three core civil domains under Indian statutes:
+        </p>
+      </div>
+
+      {/* Carousel */}
+      <div className="relative w-full flex items-center justify-center" style={{ height: 340 }}>
+        {CATEGORIES.map((cat, idx) => {
+          const pos = getPosition(idx);
+          const Icon = cat.icon;
+          const isCenter = pos === "center";
+
+          return (
+            <motion.div
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              animate={positionStyles[pos]}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{
+                position: "absolute",
+                width: "clamp(240px, 30%, 320px)",
+                cursor: pos !== "center" ? "pointer" : "default",
+              }}
+              className={`
+                rounded-2xl p-6 space-y-4 border select-none
+                ${isCenter
+                  ? "bg-white border-indigo-300 shadow-2xl shadow-indigo-200 ring-2 ring-indigo-400/40"
+                  : "bg-white border-slate-200 shadow-md"
+                }
+              `}
+            >
+              <div className={`p-3 rounded-xl w-max ${isCenter ? "bg-indigo-100 text-indigo-600" : "bg-slate-100 text-slate-500"}`}>
+                <Icon className="w-6 h-6" />
+              </div>
+              <h3 className={`text-lg font-bold ${isCenter ? "text-slate-900" : "text-slate-600"}`}>
+                {isHindi ? cat.titleHi : cat.title}
+              </h3>
+              <p className={`text-xs leading-relaxed font-medium ${isCenter ? "text-indigo-600" : "text-slate-400"}`}>
+                {cat.subtitle}
+              </p>
+              {isCenter && (
+                <motion.ul
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.3 }}
+                  className="text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium"
+                >
+                  {cat.items.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </motion.ul>
+              )}
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-2 mt-2">
+        {CATEGORIES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActiveIndex(i)}
+            className={`rounded-full transition-all duration-300 ${
+              i === activeIndex
+                ? "w-6 h-2 bg-indigo-600"
+                : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 // Light-mode, state-driven Interactive Intelligence Dashboard
 const LegalIntelligenceDashboard: React.FC = () => {
   // Panel 1: Time Travel Scrubber States
@@ -519,72 +689,8 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
             <LegalIntelligenceDashboard />
           </div>
 
-          {/* Section B: Supported Disputes Grid */}
-          <div className="space-y-8 pt-4">
-            <div className="text-center space-y-2">
-              <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-                {isHindi ? "समर्थित कानूनी श्रेणियां" : "Supported Legal Categories"}
-              </h2>
-              <p className="text-slate-500 text-sm max-w-lg mx-auto">
-                Our platform specializes in three core civil domains under Indian statutes:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              
-              {/* Category 1: Consumer */}
-              <div className="border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow space-y-4">
-                <div className="bg-indigo-50 text-indigo-600 p-3 rounded-xl w-max">
-                  <Shield className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800">Consumer Protection</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Navigates disputes under the **Consumer Protection Act, 2019**:
-                </p>
-                <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium">
-                  <li>Defective products or manufacturing faults</li>
-                  <li>Refusal or delay of eligible product refunds</li>
-                  <li>Overcharging above MRP or hidden service charges</li>
-                  <li>Misleading advertising or services deficiencies</li>
-                </ul>
-              </div>
-
-              {/* Category 2: Labour */}
-              <div className="border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow space-y-4">
-                <div className="bg-indigo-50 text-indigo-600 p-3 rounded-xl w-max">
-                  <Briefcase className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800">Employee Rights</h3>
-                <p className="text-xs text-slate-555 leading-relaxed">
-                  Navigates labor disputes under the new **Code on Wages, 2019**:
-                </p>
-                <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium">
-                  <li>Unpaid salary, final settlements, or holding wages</li>
-                  <li>Unpaid overtime hours or unlawful salary cuts</li>
-                  <li>Resignation and notice period disputes</li>
-                  <li>Recovery of bonus payments</li>
-                </ul>
-              </div>
-
-              {/* Category 3: Tenant */}
-              <div className="border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow space-y-4">
-                <div className="bg-indigo-50 text-indigo-600 p-3 rounded-xl w-max">
-                  <Scale className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800">Tenant & Rental</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Resolves rental disputes mapped to the **Model Tenancy Act**:
-                </p>
-                <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4 font-medium">
-                  <li>Landlord refusing to return security deposits</li>
-                  <li>Notice period and eviction timeline disagreements</li>
-                  <li>Refusal to perform necessary structural repairs</li>
-                  <li>Rent hike or lease agreement terms</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
+          {/* Section B: Supported Disputes Carousel */}
+          <CategoryCarousel onStart={onStart} isHindi={isHindi} />
 
         </div>
       </div>
