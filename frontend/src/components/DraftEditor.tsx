@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, Download, FileText, RefreshCw, Loader, AlertTriangle, User, Briefcase, List, Target } from "lucide-react";
+import { ArrowLeft, Download, FileText, RefreshCw, Loader, AlertTriangle } from "lucide-react";
 
 interface DraftEditorProps {
   initialText: string;
@@ -16,27 +16,41 @@ interface DraftEditorProps {
 }
 
 export const DraftEditor: React.FC<DraftEditorProps> = ({
-  initialText, templateId, sender: initialSender, recipient: initialRecipient,
-  relevantFacts: initialFacts, remedy: initialRemedy, applicableSections, extraDetails,
-  onBack, onDraft, onExportPdf
+  initialText,
+  templateId,
+  sender: initialSender,
+  recipient: initialRecipient,
+  relevantFacts: initialFacts,
+  remedy: initialRemedy,
+  applicableSections,
+  extraDetails,
+  onBack,
+  onDraft,
+  onExportPdf
 }) => {
   const [draftText, setDraftText] = useState(initialText);
+  
+  // Form states to support easy regeneration
   const [senderName, setSenderName] = useState(initialSender?.name || "");
   const [senderAddress, setSenderAddress] = useState(initialSender?.address || "");
   const [senderContact, setSenderContact] = useState(initialSender?.contact || "");
   const [senderDesignation, setSenderDesignation] = useState(initialSender?.designation || "");
   const [senderEmpId, setSenderEmpId] = useState(initialSender?.employee_id || "");
+
   const [recipientName, setRecipientName] = useState(initialRecipient?.name || "");
   const [recipientAddress, setRecipientAddress] = useState(initialRecipient?.address || "");
   const [recipientContact, setRecipientContact] = useState(initialRecipient?.contact || "");
   const [recipientCompany, setRecipientCompany] = useState(initialRecipient?.company_name || "");
   const [recipientDesignation, setRecipientDesignation] = useState(initialRecipient?.designation || "");
+
   const [facts, setFacts] = useState(initialFacts.join("\n"));
   const [remedyText, setRemedyText] = useState(initialRemedy);
+
   const [drafting, setDrafting] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Citation detection
   const isCitationEdited = applicableSections && applicableSections.some(
     sec => sec.verified && (!draftText.includes(sec.section) || !draftText.includes(sec.act))
   );
@@ -48,14 +62,27 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
       const payload = {
         template_id: templateId,
         date: new Date().toISOString().split("T")[0],
-        sender: { name: senderName, address: senderAddress, contact: senderContact, designation: senderDesignation, employee_id: senderEmpId },
-        recipient: { name: recipientName, address: recipientAddress, contact: recipientContact, company_name: recipientCompany, designation: recipientDesignation },
+        sender: {
+          name: senderName,
+          address: senderAddress,
+          contact: senderContact,
+          designation: senderDesignation,
+          employee_id: senderEmpId
+        },
+        recipient: {
+          name: recipientName,
+          address: recipientAddress,
+          contact: recipientContact,
+          company_name: recipientCompany,
+          designation: recipientDesignation
+        },
         relevant_facts: facts.split("\n").filter(f => f.trim() !== ""),
         issue_description: initialText.match(/SUBJECT: Legal Notice regarding (.*)/)?.[1] || "Grievance Description",
         applicable_sections: applicableSections,
         remedy: remedyText,
         extra_details: extraDetails
       };
+      
       const newText = await onDraft(payload);
       setDraftText(newText);
     } catch (err: any) {
@@ -85,303 +112,226 @@ export const DraftEditor: React.FC<DraftEditorProps> = ({
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "9px 12px",
-    borderRadius: 8,
-    border: "1.5px solid #e2e8f0",
-    fontSize: 12,
-    fontWeight: 500,
-    color: "#1e293b",
-    background: "#f8fafc",
-    fontFamily: "'Inter', system-ui, sans-serif",
-    outline: "none",
-    boxSizing: "border-box",
-    transition: "border-color 0.2s",
-  };
-
-  const sectionHeaderStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-    fontSize: 11,
-    fontWeight: 700,
-    color: "#94a3b8",
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-    marginBottom: 10,
-  };
-
   return (
-    <div style={{ minHeight: "calc(100vh - 65px)", background: "#f8fafc", padding: "32px 16px 48px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <div className="max-w-6xl mx-auto py-10 px-4">
+      <button
+        onClick={onBack}
+        className="mb-6 flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Next Steps
+      </button>
 
-        {/* Back */}
-        <button
-          onClick={onBack}
-          style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 20, background: "none", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#64748b", padding: 0 }}
-          onMouseEnter={e => (e.currentTarget.style.color = "#4f46e5")}
-          onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-        >
-          <ArrowLeft style={{ width: 15, height: 15 }} />
-          Back to Next Steps
-        </button>
+      {/* Top Disclaimer Box */}
+      <div className="bg-amber-50 border border-amber-300 rounded-lg p-4 mb-6 flex gap-3 text-amber-800 shadow-sm">
+        <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
+        <div className="text-xs leading-relaxed">
+          <span className="font-bold">MANDATORY LEGAL WARNING:</span> This drafted document is auto-generated for informational purposes only. It is not legal advice and should be reviewed, edited, and approved by a qualified lawyer before signature or official delivery.
+        </div>
+      </div>
 
-        {/* Page title */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 20 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Left Column: Form Editor parameters */}
+        <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-6 max-h-[80vh] overflow-y-auto">
           <div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#eef2ff", border: "1px solid #c7d2fe", borderRadius: 100, padding: "5px 14px", marginBottom: 8 }}>
-              <FileText style={{ width: 13, height: 13, color: "#4f46e5" }} />
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#4338ca" }}>Notice Draft Editor</span>
-            </div>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0f172a", margin: 0, letterSpacing: "-0.03em" }}>Legal Notice Draft</h1>
+            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
+              <FileText className="w-5 h-5 text-indigo-600" />
+              Notice Parameters
+            </h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Edit the extracted parameter fields and regenerate the notice template draft text on the right.
+            </p>
           </div>
-          {/* Export PDF button */}
+
+          {error && (
+            <div className="bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-800">
+              {error}
+            </div>
+          )}
+
+          {/* SENDER INFO */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Sender / Applicant Info</h3>
+            <div className="grid grid-cols-1 gap-2">
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Sender Name"
+                value={senderName}
+                onChange={e => setSenderName(e.target.value)}
+              />
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Address"
+                value={senderAddress}
+                onChange={e => setSenderAddress(e.target.value)}
+              />
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Contact Details"
+                value={senderContact}
+                onChange={e => setSenderContact(e.target.value)}
+              />
+              {templateId.includes("labour") && (
+                <>
+                  <input
+                    type="text"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                    placeholder="Employee Designation"
+                    value={senderDesignation}
+                    onChange={e => setSenderDesignation(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                    placeholder="Employee ID"
+                    value={senderEmpId}
+                    onChange={e => setSenderEmpId(e.target.value)}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* RECIPIENT INFO */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Recipient / Opposing Party Info</h3>
+            <div className="grid grid-cols-1 gap-2">
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Recipient Name"
+                value={recipientName}
+                onChange={e => setRecipientName(e.target.value)}
+              />
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Address"
+                value={recipientAddress}
+                onChange={e => setRecipientAddress(e.target.value)}
+              />
+              <input
+                type="text"
+                className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                placeholder="Contact Details"
+                value={recipientContact}
+                onChange={e => setRecipientContact(e.target.value)}
+              />
+              {templateId.includes("labour") && (
+                <>
+                  <input
+                    type="text"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                    placeholder="Company Name"
+                    value={recipientCompany}
+                    onChange={e => setRecipientCompany(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+                    placeholder="Representative Designation"
+                    value={recipientDesignation}
+                    onChange={e => setRecipientDesignation(e.target.value)}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* FACTS */}
+          <div className="space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Facts (One per line)</h3>
+            <textarea
+              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+              rows={4}
+              placeholder="Enter timeline / facts..."
+              value={facts}
+              onChange={e => setFacts(e.target.value)}
+            />
+          </div>
+
+          {/* REMEDY */}
+          <div className="space-y-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Demand / Remedy</h3>
+            <textarea
+              className="w-full text-xs border border-slate-300 rounded px-2.5 py-1.5 focus:ring-1 focus:ring-indigo-500 bg-white text-slate-800 font-medium"
+              rows={3}
+              placeholder="Enter remedy..."
+              value={remedyText}
+              onChange={e => setRemedyText(e.target.value)}
+            />
+          </div>
+
           <button
-            id="draft-export-pdf-btn"
-            onClick={handleDownloadPdf}
-            disabled={exporting || !draftText.trim()}
-            style={{
-              display: "flex", alignItems: "center", gap: 8, padding: "11px 20px", borderRadius: 12, border: "none",
-              background: exporting || !draftText.trim() ? "#e2e8f0" : "linear-gradient(135deg, #059669, #10b981)",
-              color: exporting || !draftText.trim() ? "#94a3b8" : "#ffffff",
-              fontSize: 13, fontWeight: 700, cursor: exporting || !draftText.trim() ? "not-allowed" : "pointer",
-              boxShadow: exporting || !draftText.trim() ? "none" : "0 4px 14px rgba(16,185,129,0.3)",
-              transition: "all 0.2s",
-            }}
+            onClick={handleRegenerate}
+            disabled={drafting}
+            className="w-full flex items-center justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 gap-2 transition-colors cursor-pointer"
           >
-            {exporting ? (
-              <><Loader style={{ width: 16, height: 16, animation: "spin 1s linear infinite" }} />Generating PDF...</>
+            {drafting ? (
+              <>
+                <Loader className="animate-spin w-4 h-4" />
+                Regenerating...
+              </>
             ) : (
-              <><Download style={{ width: 16, height: 16 }} />Download PDF Notice</>
+              <>
+                <RefreshCw className="w-4 h-4" />
+                Regenerate Draft
+              </>
             )}
           </button>
         </div>
 
-        {/* Disclaimer */}
-        <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 14, padding: "14px 18px", marginBottom: 24, display: "flex", gap: 12, alignItems: "flex-start" }}>
-          <AlertTriangle style={{ width: 16, height: 16, color: "#d97706", flexShrink: 0, marginTop: 1 }} />
-          <div style={{ fontSize: 12, color: "#92400e", lineHeight: 1.6 }}>
-            <strong>MANDATORY LEGAL WARNING: </strong>
-            This drafted document is auto-generated for informational purposes only. It is not legal advice and should be reviewed, edited, and approved by a qualified lawyer before signature or official delivery.
-          </div>
-        </div>
-
-        {/* Two-column layout */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 20 }}>
-
-          {/* LEFT: Parameters Panel */}
-          <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(79,70,229,0.05)", maxHeight: "82vh", overflowY: "auto", display: "flex", flexDirection: "column" }}>
-            {/* Panel header */}
-            <div style={{ padding: "18px 22px", borderBottom: "1px solid #f1f5f9", display: "flex", alignItems: "center", gap: 10, position: "sticky", top: 0, background: "#fff", zIndex: 2 }}>
-              <div style={{ width: 32, height: 32, borderRadius: 9, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <FileText style={{ width: 16, height: 16, color: "#4f46e5" }} />
-              </div>
-              <div>
-                <h2 style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", margin: 0 }}>Notice Parameters</h2>
-                <p style={{ fontSize: 11, color: "#94a3b8", margin: 0 }}>Edit fields and regenerate</p>
-              </div>
+        {/* Right Column: Text Document Editor area */}
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <div>
+              <h2 className="text-lg font-bold text-slate-800">Notice Document Draft</h2>
+              <p className="text-xs text-slate-500 mt-1">
+                You can type directly into the editor below to make any manual corrections.
+              </p>
             </div>
-
-            <div style={{ padding: "20px 22px", display: "flex", flexDirection: "column", gap: 20, flex: 1 }}>
-              {error && (
-                <div style={{ background: "#fef2f2", borderLeft: "3px solid #ef4444", borderRadius: 8, padding: "10px 14px", fontSize: 12, color: "#b91c1c" }}>{error}</div>
+            
+            <button
+              onClick={handleDownloadPdf}
+              disabled={exporting || !draftText.trim()}
+              className="flex items-center py-2 px-4 border border-transparent rounded text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 gap-2 transition-colors cursor-pointer"
+            >
+              {exporting ? (
+                <>
+                  <Loader className="animate-spin w-4 h-4" />
+                  Generating PDF...
+                </>
+              ) : (
+                <>
+                  <Download className="w-4 h-4" />
+                  Download PDF Notice
+                </>
               )}
-
-              {/* SENDER */}
-              <div>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ width: 20, height: 20, borderRadius: 5, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <User style={{ width: 11, height: 11, color: "#4f46e5" }} />
-                  </div>
-                  Sender / Applicant
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {[
-                    { val: senderName, set: setSenderName, ph: "Full Name" },
-                    { val: senderAddress, set: setSenderAddress, ph: "Address" },
-                    { val: senderContact, set: setSenderContact, ph: "Contact (Phone / Email)" },
-                  ].map((f, i) => (
-                    <input key={i} type="text" placeholder={f.ph} value={f.val} onChange={e => f.set(e.target.value)} style={inputStyle}
-                      onFocus={e => { e.currentTarget.style.borderColor = "#4f46e5"; }}
-                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; }}
-                    />
-                  ))}
-                  {templateId.includes("labour") && (
-                    <>
-                      <input type="text" placeholder="Designation" value={senderDesignation} onChange={e => setSenderDesignation(e.target.value)} style={inputStyle} onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"} onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"} />
-                      <input type="text" placeholder="Employee ID" value={senderEmpId} onChange={e => setSenderEmpId(e.target.value)} style={inputStyle} onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"} onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"} />
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* RECIPIENT */}
-              <div>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ width: 20, height: 20, borderRadius: 5, background: "#fff7ed", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Briefcase style={{ width: 11, height: 11, color: "#ea580c" }} />
-                  </div>
-                  Recipient / Opposing Party
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {[
-                    { val: recipientName, set: setRecipientName, ph: "Recipient Name" },
-                    { val: recipientAddress, set: setRecipientAddress, ph: "Address" },
-                    { val: recipientContact, set: setRecipientContact, ph: "Contact" },
-                  ].map((f, i) => (
-                    <input key={i} type="text" placeholder={f.ph} value={f.val} onChange={e => f.set(e.target.value)} style={inputStyle}
-                      onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"}
-                      onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"}
-                    />
-                  ))}
-                  {templateId.includes("labour") && (
-                    <>
-                      <input type="text" placeholder="Company Name" value={recipientCompany} onChange={e => setRecipientCompany(e.target.value)} style={inputStyle} onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"} onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"} />
-                      <input type="text" placeholder="Representative Designation" value={recipientDesignation} onChange={e => setRecipientDesignation(e.target.value)} style={inputStyle} onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"} onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"} />
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* FACTS */}
-              <div>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ width: 20, height: 20, borderRadius: 5, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <List style={{ width: 11, height: 11, color: "#16a34a" }} />
-                  </div>
-                  Facts (one per line)
-                </div>
-                <textarea
-                  rows={4}
-                  placeholder="Enter timeline / facts..."
-                  value={facts}
-                  onChange={e => setFacts(e.target.value)}
-                  style={{ ...inputStyle, resize: "vertical" }}
-                  onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"}
-                  onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"}
-                />
-              </div>
-
-              {/* REMEDY */}
-              <div>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ width: 20, height: 20, borderRadius: 5, background: "#faf5ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Target style={{ width: 11, height: 11, color: "#7c3aed" }} />
-                  </div>
-                  Demand / Remedy
-                </div>
-                <textarea
-                  rows={3}
-                  placeholder="Enter remedy..."
-                  value={remedyText}
-                  onChange={e => setRemedyText(e.target.value)}
-                  style={{ ...inputStyle, resize: "vertical" }}
-                  onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"}
-                  onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"}
-                />
-              </div>
-
-              {/* Regenerate button */}
-              <button
-                id="draft-regenerate-btn"
-                onClick={handleRegenerate}
-                disabled={drafting}
-                style={{
-                  width: "100%",
-                  padding: "12px 20px",
-                  borderRadius: 12,
-                  border: "none",
-                  background: drafting ? "#e2e8f0" : "linear-gradient(135deg, #4f46e5, #7c3aed)",
-                  color: drafting ? "#94a3b8" : "#ffffff",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  cursor: drafting ? "not-allowed" : "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  boxShadow: drafting ? "none" : "0 4px 14px rgba(79,70,229,0.25)",
-                  transition: "all 0.2s",
-                }}
-              >
-                {drafting ? (
-                  <><Loader style={{ width: 15, height: 15, animation: "spin 1s linear infinite" }} />Regenerating...</>
-                ) : (
-                  <><RefreshCw style={{ width: 15, height: 15 }} />Regenerate Draft</>
-                )}
-              </button>
-            </div>
+            </button>
           </div>
 
-          {/* RIGHT: Document Editor Panel */}
-          <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 20, overflow: "hidden", boxShadow: "0 4px 24px rgba(79,70,229,0.05)", display: "flex", flexDirection: "column" }}>
-            {/* Header */}
-            <div style={{ padding: "18px 22px", borderBottom: "1px solid #f1f5f9", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, position: "sticky", top: 0, background: "#fff", zIndex: 2 }}>
+          {/* Citation Edited Warning */}
+          {isCitationEdited && (
+            <div className="bg-amber-50 border-l-4 border-amber-500 p-3 rounded text-xs text-amber-800 flex items-start gap-2">
+              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
               <div>
-                <h2 style={{ fontSize: 14, fontWeight: 800, color: "#0f172a", margin: 0 }}>Notice Document Draft</h2>
-                <p style={{ fontSize: 11, color: "#94a3b8", margin: 0 }}>Click to edit text directly in the editor below</p>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: "#64748b", background: "#f1f5f9", padding: "3px 8px", borderRadius: 6 }}>
-                  {templateId}
-                </span>
+                <span className="font-bold">⚠️ Warning:</span> This is a verified legal citation. Changing it may affect legal accuracy.
               </div>
             </div>
+          )}
 
-            {/* Citation warning */}
-            {isCitationEdited && (
-              <div style={{ background: "#fffbeb", borderBottom: "1px solid #fcd34d", padding: "10px 22px", display: "flex", gap: 10, alignItems: "flex-start" }}>
-                <AlertTriangle style={{ width: 14, height: 14, color: "#d97706", flexShrink: 0, marginTop: 1 }} />
-                <div style={{ fontSize: 11, color: "#92400e" }}>
-                  <strong>⚠️ Warning:</strong> A verified legal citation appears to have been modified. This may affect legal accuracy.
-                </div>
-              </div>
-            )}
-
-            {/* The document editor */}
-            <div style={{ flex: 1, padding: "0 22px 22px", display: "flex", flexDirection: "column" }}>
-              {/* Document letterhead styling */}
-              <div style={{ background: "#f8fafc", borderBottom: "2px solid #e2e8f0", padding: "14px 18px", margin: "16px 0 0", borderRadius: "12px 12px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 7, background: "linear-gradient(135deg, #4f46e5, #7c3aed)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <FileText style={{ width: 14, height: 14, color: "#fff" }} />
-                  </div>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: "#1e293b" }}>LEGAL NOTICE DOCUMENT</span>
-                </div>
-                <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 500 }}>
-                  {new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
-                </span>
-              </div>
-              <textarea
-                id="draft-editor-textarea"
-                value={draftText}
-                onChange={e => setDraftText(e.target.value)}
-                style={{
-                  flex: 1,
-                  minHeight: "60vh",
-                  padding: "18px",
-                  border: "1.5px solid #e2e8f0",
-                  borderTop: "none",
-                  borderRadius: "0 0 12px 12px",
-                  fontSize: 12,
-                  fontFamily: "'Courier New', 'Courier', monospace",
-                  color: "#1e293b",
-                  background: "#fdfdfe",
-                  lineHeight: 1.8,
-                  resize: "vertical",
-                  outline: "none",
-                  boxSizing: "border-box",
-                  width: "100%",
-                }}
-                onFocus={e => e.currentTarget.style.borderColor = "#4f46e5"}
-                onBlur={e => e.currentTarget.style.borderColor = "#e2e8f0"}
-              />
-            </div>
-          </div>
+          <textarea
+            className="w-full h-[65vh] p-4 text-xs font-mono border border-slate-300 rounded focus:ring-1 focus:ring-indigo-500 bg-slate-50 text-slate-800 leading-relaxed overflow-y-auto resize-none"
+            value={draftText}
+            onChange={e => setDraftText(e.target.value)}
+          />
         </div>
+
       </div>
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 };

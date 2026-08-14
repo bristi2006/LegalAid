@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HelpCircle, AlertTriangle, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { HelpCircle, AlertTriangle, ArrowRight, ArrowLeft } from "lucide-react";
 
 interface MissingInfoProps {
   missingFacts: string[];
@@ -9,8 +9,15 @@ interface MissingInfoProps {
   language: string;
 }
 
-export const MissingInfo: React.FC<MissingInfoProps> = ({ missingFacts, contradiction, onResolve, onBack, language }) => {
+export const MissingInfo: React.FC<MissingInfoProps> = ({
+  missingFacts,
+  contradiction,
+  onResolve,
+  onBack,
+  language
+}) => {
   const isHindi = language.toLowerCase() === "hindi";
+
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedContradiction, setSelectedContradiction] = useState<string | null>(null);
 
@@ -23,35 +30,43 @@ export const MissingInfo: React.FC<MissingInfoProps> = ({ missingFacts, contradi
     switch (field) {
       case "employment_status":
         return {
-          question: isHindi ? "आपके काम करने की व्यवस्था को सबसे बेहतर क्या दर्शाता है?" : "What best describes your work arrangement?",
+          question: isHindi 
+            ? "आपके काम करने की व्यवस्था को सबसे बेहतर क्या दर्शाता है?" 
+            : "What best describes your work arrangement?",
           options: [
-            { value: "Full-time employee", label: isHindi ? "पूर्णकालिक कर्मचारी" : "Full-time employee", icon: "👔" },
-            { value: "Part-time employee", label: isHindi ? "अंशकालिक कर्मचारी" : "Part-time employee", icon: "🕐" },
-            { value: "Contract worker", label: isHindi ? "अनुबंध कार्यकर्ता" : "Contract worker", icon: "📄" },
-            { value: "Apprentice", label: isHindi ? "प्रशिक्षु" : "Apprentice", icon: "🎓" },
-            { value: "Other", label: isHindi ? "अन्य" : "Other", icon: "➕" },
+            { value: "Full-time employee", label: isHindi ? "पूर्णकालिक कर्मचारी (Full-time)" : "Full-time employee" },
+            { value: "Part-time employee", label: isHindi ? "अंशकालिक कर्मचारी (Part-time)" : "Part-time employee" },
+            { value: "Contract worker", label: isHindi ? "अनुबंध कार्यकर्ता (Contract worker)" : "Contract worker" },
+            { value: "Apprentice", label: isHindi ? "प्रशिक्षु (Apprentice)" : "Apprentice" },
+            { value: "Other", label: isHindi ? "अन्य (Other)" : "Other" }
           ]
         };
       case "state":
         return {
-          question: isHindi ? "यह मामला किस राज्य में हुआ था?" : "Which state did this matter occur in?",
+          question: isHindi 
+            ? "यह मामला किस राज्य में हुआ था?" 
+            : "Which state did this matter occur in?",
           options: [
-            { value: "Gujarat", label: "Gujarat", icon: "🗺️" },
-            { value: "Delhi", label: "Delhi", icon: "🏛️" },
-            { value: "Karnataka", label: "Karnataka", icon: "🌿" },
-            { value: "Maharashtra", label: "Maharashtra", icon: "🌊" },
-            { value: "Other", label: isHindi ? "अन्य राज्य" : "Other State", icon: "📍" },
+            { value: "Gujarat", label: "Gujarat" },
+            { value: "Delhi", label: "Delhi" },
+            { value: "Karnataka", label: "Karnataka" },
+            { value: "Maharashtra", label: "Maharashtra" },
+            { value: "Other", label: isHindi ? "अन्य राज्य" : "Other State" }
           ]
         };
       case "premises_address":
         return {
-          question: isHindi ? "किराए के परिसर का पूरा पता क्या है?" : "What is the full address of the rented premises?",
+          question: isHindi 
+            ? "किराए के परिसर का पूरा पता क्या है?" 
+            : "What is the full address of the rented premises?",
           input: true,
           placeholder: "e.g. Flat 304, Maple Heights, HSR Layout, Bengaluru"
         };
       case "purchase_date":
         return {
-          question: isHindi ? "खरीदारी या लेनदेन की तारीख क्या थी?" : "What was the date of purchase or transaction?",
+          question: isHindi 
+            ? "खरीदारी या लेनदेन की तारीख क्या थी?" 
+            : "What was the date of purchase or transaction?",
           date: true
         };
       default:
@@ -63,209 +78,141 @@ export const MissingInfo: React.FC<MissingInfoProps> = ({ missingFacts, contradi
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "11px 14px",
-    borderRadius: 10,
-    border: "1.5px solid #e2e8f0",
-    fontSize: 13,
-    fontWeight: 500,
-    color: "#1e293b",
-    background: "#f8fafc",
-    fontFamily: "'Inter', system-ui, sans-serif",
-    outline: "none",
-    boxSizing: "border-box",
-    transition: "border-color 0.2s, box-shadow 0.2s",
-  };
-
   return (
-    <div style={{ minHeight: "calc(100vh - 65px)", background: "#f8fafc", padding: "32px 16px 48px" }}>
-      <div style={{ maxWidth: 680, margin: "0 auto" }}>
+    <div className="max-w-2xl mx-auto py-10 px-4">
+      <button
+        onClick={onBack}
+        className="mb-6 flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        {isHindi ? "पीछे जाएं" : "Back to Input"}
+      </button>
 
-        {/* Back button */}
-        <button
-          onClick={onBack}
-          style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 24, background: "none", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600, color: "#64748b", padding: 0 }}
-          onMouseEnter={e => (e.currentTarget.style.color = "#4f46e5")}
-          onMouseLeave={e => (e.currentTarget.style.color = "#64748b")}
-        >
-          <ArrowLeft style={{ width: 15, height: 15 }} />
-          {isHindi ? "पीछे जाएं" : "Back to Input"}
-        </button>
-
-        {/* Header */}
-        <div style={{ marginBottom: 24 }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#eef2ff", border: "1px solid #c7d2fe", borderRadius: 100, padding: "5px 14px", marginBottom: 14 }}>
-            <HelpCircle style={{ width: 13, height: 13, color: "#4f46e5" }} />
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#4338ca" }}>
-              {isHindi ? "अतिरिक्त विवरण" : "Additional Details Required"}
-            </span>
-          </div>
-          <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0f172a", margin: "0 0 8px", letterSpacing: "-0.03em" }}>
-            {isHindi ? "कुछ विवरण और चाहिए" : "A few more details needed"}
+      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8 space-y-8">
+        <div>
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-3">
+            <HelpCircle className="w-7 h-7 text-indigo-600 animate-pulse" />
+            {isHindi ? "कुछ अतिरिक्त विवरण आवश्यक हैं" : "A few details are needed"}
           </h1>
-          <p style={{ fontSize: 14, color: "#64748b", margin: 0, lineHeight: 1.6 }}>
-            {isHindi
-              ? "मामले के सही विश्लेषण के लिए कृपया निम्नलिखित जानकारी प्रदान करें।"
+          <p className="mt-1 text-sm text-slate-500">
+            {isHindi 
+              ? "मामले के सही विश्लेषण के लिए कृपया निम्नलिखित जानकारी प्रदान करें।" 
               : "To perform an accurate rights analysis, please complete the fields below."}
           </p>
         </div>
 
-        {/* Main card */}
-        <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(79,70,229,0.05)" }}>
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-
-            {/* Contradiction Section */}
-            {contradiction && (
-              <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 14, padding: "18px 20px" }}>
-                <div style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 16 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "#fef3c7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <AlertTriangle style={{ width: 18, height: 18, color: "#d97706" }} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, color: "#92400e", margin: "0 0 4px" }}>
-                      {isHindi ? "⚠️ विरोधाभासी विवरण पाया गया" : "⚠️ Conflicting detail detected"}
-                    </h3>
-                    <p style={{ fontSize: 12, color: "#b45309", margin: 0, lineHeight: 1.6 }}>
-                      {isHindi
-                        ? `आपके विवरण में दो अलग-अलग ${contradiction.field} मूल्य मिले। कृपया सही एक चुनें:`
-                        : `You referenced two values for ${contradiction.field}. Please confirm the correct one:`}
-                    </p>
-                  </div>
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-                  {contradiction.values.map((val) => (
-                    <label
-                      key={val}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        padding: "14px 16px",
-                        borderRadius: 12,
-                        border: `2px solid ${selectedContradiction === val ? "#4f46e5" : "#e2e8f0"}`,
-                        background: selectedContradiction === val ? "#eef2ff" : "#ffffff",
-                        cursor: "pointer",
-                        transition: "all 0.15s",
-                      }}
-                    >
-                      <span style={{ fontSize: 14, fontWeight: 700, color: selectedContradiction === val ? "#3730a3" : "#475569" }}>{val}</span>
-                      <input
-                        type="radio"
-                        name="contradiction"
-                        value={val}
-                        checked={selectedContradiction === val}
-                        onChange={() => setSelectedContradiction(val)}
-                        required
-                        style={{ accentColor: "#4f46e5", width: 16, height: 16 }}
-                      />
-                    </label>
-                  ))}
+        <form onSubmit={handleSubmit} className="space-y-8">
+          
+          {/* Contradiction Section */}
+          {contradiction && (
+            <div className="bg-amber-50 border border-amber-300 rounded-lg p-5 space-y-4">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <h3 className="text-sm font-bold text-amber-900">
+                    {isHindi ? "⚠️ विरोधाभासी विवरण पाया गया" : "⚠️ We found a conflicting detail"}
+                  </h3>
+                  <p className="text-xs text-amber-700 leading-relaxed">
+                    {isHindi 
+                      ? `आपने अपने विवरण में दो अलग-अलग मूल्य प्रदान किए हैं। कृपया पुष्टि करें कि कौन सा सही ${contradiction.field} है:` 
+                      : `You have referenced multiple values in your description. Please confirm which is the correct ${contradiction.field}:`}
+                  </p>
                 </div>
               </div>
-            )}
 
-            {/* Missing Facts Questions */}
-            {missingFacts.map((field) => {
-              const q = renderFieldQuestion(field);
-              return (
-                <div key={field}>
-                  <label style={{ display: "block", fontSize: 14, fontWeight: 700, color: "#1e293b", marginBottom: 14 }}>
-                    {q.question}
+              <div className="grid grid-cols-2 gap-3 pl-8">
+                {contradiction.values.map((val) => (
+                  <label
+                    key={val}
+                    className={`flex items-center justify-between p-3.5 rounded-lg border text-sm font-semibold cursor-pointer transition-all ${
+                      selectedContradiction === val
+                        ? "border-indigo-600 bg-indigo-50 text-indigo-900"
+                        : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+                    }`}
+                  >
+                    <span>{val}</span>
+                    <input
+                      type="radio"
+                      name="contradiction"
+                      value={val}
+                      checked={selectedContradiction === val}
+                      onChange={() => setSelectedContradiction(val)}
+                      className="text-indigo-600 focus:ring-indigo-500 h-4 w-4"
+                      required
+                    />
                   </label>
+                ))}
+              </div>
+            </div>
+          )}
 
-                  {q.options && (
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 10 }}>
-                      {q.options.map((opt: any) => (
-                        <label
-                          key={opt.value}
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 10,
-                            padding: "12px 14px",
-                            borderRadius: 12,
-                            border: `2px solid ${answers[field] === opt.value ? "#4f46e5" : "#e2e8f0"}`,
-                            background: answers[field] === opt.value ? "#eef2ff" : "#ffffff",
-                            cursor: "pointer",
-                            transition: "all 0.15s",
-                          }}
-                        >
-                          <span style={{ fontSize: 18 }}>{opt.icon}</span>
-                          <span style={{ fontSize: 12, fontWeight: 600, color: answers[field] === opt.value ? "#3730a3" : "#475569", flex: 1 }}>{opt.label}</span>
-                          {answers[field] === opt.value && <CheckCircle2 style={{ width: 16, height: 16, color: "#4f46e5", flexShrink: 0 }} />}
-                          <input
-                            type="radio"
-                            name={field}
-                            value={opt.value}
-                            checked={answers[field] === opt.value}
-                            onChange={() => setAnswers({ ...answers, [field]: opt.value })}
-                            required
-                            style={{ display: "none" }}
-                          />
-                        </label>
-                      ))}
-                    </div>
-                  )}
+          {/* Missing Facts Questions */}
+          {missingFacts.map((field) => {
+            const questionData = renderFieldQuestion(field);
+            return (
+              <div key={field} className="space-y-3">
+                <label className="block text-sm font-semibold text-slate-800">
+                  {questionData.question}
+                </label>
 
-                  {q.input && (
-                    <input
-                      type="text"
-                      required
-                      placeholder={q.placeholder}
-                      value={answers[field] || ""}
-                      onChange={(e) => setAnswers({ ...answers, [field]: e.target.value })}
-                      style={inputStyle}
-                      onFocus={e => { e.currentTarget.style.borderColor = "#4f46e5"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(79,70,229,0.1)"; }}
-                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
-                    />
-                  )}
+                {questionData.options && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {questionData.options.map((opt) => (
+                      <label
+                        key={opt.value}
+                        className={`flex items-center justify-between p-3 rounded-lg border text-xs font-semibold cursor-pointer transition-all ${
+                          answers[field] === opt.value
+                            ? "border-indigo-600 bg-indigo-50 text-indigo-900"
+                            : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+                        }`}
+                      >
+                        <span>{opt.label}</span>
+                        <input
+                          type="radio"
+                          name={field}
+                          value={opt.value}
+                          checked={answers[field] === opt.value}
+                          onChange={() => setAnswers({ ...answers, [field]: opt.value })}
+                          className="text-indigo-600 focus:ring-indigo-500 h-4 w-4"
+                          required
+                        />
+                      </label>
+                    ))}
+                  </div>
+                )}
 
-                  {q.date && (
-                    <input
-                      type="date"
-                      required
-                      value={answers[field] || ""}
-                      onChange={(e) => setAnswers({ ...answers, [field]: e.target.value })}
-                      style={inputStyle}
-                      onFocus={e => { e.currentTarget.style.borderColor = "#4f46e5"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(79,70,229,0.1)"; }}
-                      onBlur={e => { e.currentTarget.style.borderColor = "#e2e8f0"; e.currentTarget.style.boxShadow = "none"; }}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                {questionData.input && (
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800"
+                    placeholder={questionData.placeholder}
+                    value={answers[field] || ""}
+                    onChange={(e) => setAnswers({ ...answers, [field]: e.target.value })}
+                  />
+                )}
 
-            {/* Submit */}
-            <button
-              id="missinginfo-submit-btn"
-              type="submit"
-              style={{
-                width: "100%",
-                padding: "15px 24px",
-                borderRadius: 14,
-                border: "none",
-                background: "linear-gradient(135deg, #4f46e5, #7c3aed)",
-                color: "#ffffff",
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 10,
-                boxShadow: "0 6px 20px rgba(79,70,229,0.3)",
-                letterSpacing: "-0.01em",
-                transition: "transform 0.15s, box-shadow 0.15s",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.01)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(79,70,229,0.4)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(79,70,229,0.3)"; }}
-            >
-              {isHindi ? "आगे बढ़ें और विश्लेषण करें" : "Proceed with Analysis"}
-              <ArrowRight style={{ width: 18, height: 18 }} />
-            </button>
-          </form>
-        </div>
+                {questionData.date && (
+                  <input
+                    type="date"
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-800"
+                    value={answers[field] || ""}
+                    onChange={(e) => setAnswers({ ...answers, [field]: e.target.value })}
+                  />
+                )}
+              </div>
+            );
+          })}
+
+          <button
+            type="submit"
+            className="w-full flex items-center justify-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer gap-2"
+          >
+            {isHindi ? "आगे बढ़ें" : "Proceed with Analysis"}
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </form>
       </div>
     </div>
   );
