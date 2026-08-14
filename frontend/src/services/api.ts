@@ -149,6 +149,37 @@ const api = {
     }
     return await res.json();
   },
+
+  /**
+   * POST /ocr-upload
+   * Sends image file for Groq / Gemini Vision OCR document analysis.
+   */
+  uploadDocumentOCR: async (
+    file: File,
+    language = "English"
+  ): Promise<{
+    document_type?: string;
+    summary?: string;
+    sender_name?: string;
+    recipient_name?: string;
+    amount?: string;
+    date?: string;
+    extracted_text?: string;
+    engine_used?: string;
+  }> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("language", language);
+
+    const res = await fetch(`${API_BASE_URL}/ocr-upload`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) {
+      throw new ApiError(`Document OCR failed (${res.status})`, res.status);
+    }
+    return await res.json();
+  },
 };
 
 export default api;
