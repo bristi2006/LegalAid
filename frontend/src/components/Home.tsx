@@ -724,7 +724,7 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
             </div>
 
             {/* Column 5: Social Connections */}
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <h4 className="text-slate-800 text-xs font-bold uppercase tracking-wider">Social Connection</h4>
               <ul className="space-y-2.5 font-medium">
                 <li>
@@ -752,7 +752,7 @@ export const Home: React.FC<HomeProps> = ({ onStart, language }) => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
           </div>
 

@@ -460,15 +460,6 @@ function App() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
-        <div className="max-w-6xl mx-auto px-4">
-          <p>© 2026 LegalAId Project. All rights reserved.</p>
-          <p className="mt-1">
-            Informational purposes only. Strictly subject to verification under India Code.
-          </p>
-        </div>
-      </footer>
 
     </div>
   );
