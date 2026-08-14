@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Scale, Award, Shield, Briefcase, Play, Pause, RefreshCw, Database, GitMerge, FileCheck } from "lucide-react";
 import { BackgroundPaths } from "./BackgroundPaths";
-import { motion } from "framer-motion";
+import { motion, type TargetAndTransition } from "framer-motion";
 import { WisprFlow } from "./WisprFlow";
 
 interface HomeProps {
@@ -181,29 +181,34 @@ const CategoryCarousel: React.FC<{ onStart: () => void; isHindi: boolean }> = ({
     return "hidden";
   };
 
-  const positionStyles: Record<string, React.CSSProperties> = {
+  const positionStyles: Record<string, TargetAndTransition> = {
     center: {
-      transform: "translateX(0%) scale(1.12)",
+      x: "0%",
+      scale: 1.12,
       opacity: 1,
       zIndex: 20,
-      filter: "none",
+      filter: "blur(0px)",
     },
     left: {
-      transform: "translateX(-72%) scale(0.84)",
+      x: "-72%",
+      scale: 0.84,
       opacity: 0.45,
       zIndex: 10,
       filter: "blur(0.5px)",
     },
     right: {
-      transform: "translateX(72%) scale(0.84)",
+      x: "72%",
+      scale: 0.84,
       opacity: 0.45,
       zIndex: 10,
       filter: "blur(0.5px)",
     },
     hidden: {
-      transform: "translateX(0%) scale(0.7)",
+      x: "0%",
+      scale: 0.7,
       opacity: 0,
       zIndex: 0,
+      filter: "blur(0px)",
     },
   };
 
